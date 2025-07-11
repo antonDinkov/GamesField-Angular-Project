@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -12,6 +16,8 @@ header {
   justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid #2e2e2e;
+  position: fixed;
+  width: 100%;
 }
 
 .brand {
@@ -42,6 +48,27 @@ nav ul li a:hover {
 
 main {
   padding: 2rem;
+  margin-top: 2em;
+}
+
+.searchField {
+    width: 30%;
+    display: flex;
+}
+#search {
+    border-radius: 0.5em;
+    width: 80%;
+}
+
+#searchBtn {
+    margin-left: 0.2em;
+    border-radius: 2em;
+    padding: 0em 1em;
+}
+
+#searchBtn:hover{
+    cursor: pointer;
+    background-color: #00ffcc;
 }
 
 h1 {
