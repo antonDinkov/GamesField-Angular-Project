@@ -1,0 +1,7 @@
+main {
+  display: flex;
+  gap: 2em;
+  height: 70%;
+  margin-top: 4%;
+  flex: 1;
+}
