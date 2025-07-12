@@ -5,5 +5,9 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   border-top: 1px solid #2e2e2e;
-  margin-top: 3rem;
+  margin-top: 3em;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
