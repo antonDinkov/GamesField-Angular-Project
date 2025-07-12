@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './shared/footer/footer';
 import { Navigation } from './shared/navigation/navigation';
-import { Home } from './features/home/home';
 import { Filter } from './features/filter/filter';
+import { HomeBoard } from './features/home/home-board/home-board';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navigation, Footer, Filter, Home],
+  imports: [RouterOutlet, Navigation, Footer, Filter, HomeBoard],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

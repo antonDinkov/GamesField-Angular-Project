@@ -1,0 +1,21 @@
+#rightside {
+  margin-top: 3%;
+  
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 85%;
+}
+
+h1 {
+  text-align: center;
+  color: #00ffcc;
+  margin-bottom: 2rem;
+}
+
+.game-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
