@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Game } from '../../../models/game.model';
 
 @Component({
   selector: 'app-home-item',
+  standalone: true,
   imports: [],
   templateUrl: './home-item.html',
-  styleUrl: './home-item.css'
+  styleUrls: ['./home-item.css']
 })
 export class HomeItem {
-
+    @Input() game!: Game;
 }

@@ -1,9 +1,8 @@
 <div id="rightside">
     <h1>Top 5 Most Popular Games</h1>
-    <section class="game-list">
-        
-        <app-home-item></app-home-item>
-        <div class="game-card">
+    <section class="game-list" *ngIf="topFiveGames.length > 0">
+            <app-home-item *ngFor="let game of topFiveGames" [game]="game"></app-home-item>
+        <!-- <div class="game-card">
             <img src="https://via.placeholder.com/300x180?text=Zombie+Attack" alt="Zombie Attack" />
             <h2>Zombie Attack</h2>
             <p>Survive the apocalypse, fight off zombies, and collect weapons!</p>
@@ -25,6 +24,6 @@
             <img src="https://via.placeholder.com/300x180?text=Chess+Master" alt="Chess Master" />
             <h2>Chess Master</h2>
             <p>Challenge AI or other players and become a grandmaster of chess.</p>
-        </div>
+        </div> -->
     </section>
 </div>
