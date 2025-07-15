@@ -1,5 +1,9 @@
 <div class="game-card">
     <img [src]="game.image" [alt]="game.name + ' image'" />
     <h2>{{game.name}}</h2>
+    <div>
+        <app-play-btn></app-play-btn>
+        <a href="#"><p>Details</p></a>
+    </div>
     <p>{{game.description}}</p>
 </div>
