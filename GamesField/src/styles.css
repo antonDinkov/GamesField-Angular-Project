@@ -21,4 +21,6 @@ body {
     background-color: #1b1b1b;
     color: #f2f2f2;
     overflow: hidden;
+    padding-top: 68px;
+    padding-bottom: 52px;
 }
