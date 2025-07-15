@@ -5,8 +5,10 @@ export interface Game {
   genre: string;
   views: number;
   played: number;
+  iframeUrl: string;
   image: string;
   description: string;
+  instructions: string;
   likes: string[]; // масив от ObjectId (стрингове)
   owner: string | null; // може да е null
 }

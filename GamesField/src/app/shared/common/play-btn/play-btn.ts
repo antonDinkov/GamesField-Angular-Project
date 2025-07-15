@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Game } from '../../../models/game.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-play-btn',
@@ -7,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './play-btn.css'
 })
 export class PlayBtn {
+    @Input() game!: Game;
 
+    constructor(private router: Router){}
+
+    startGame(){
+        this.router.navigate(['/play', this.game._id])
+    }
 }
