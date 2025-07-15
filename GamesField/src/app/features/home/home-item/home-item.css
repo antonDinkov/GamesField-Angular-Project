@@ -56,5 +56,6 @@
  
 .feedback > p > i {
     color: #00ffcc;
-    font-size: 1.5rem;
+    font-size: 1.1em;
+    margin-right: 0.2em;
 }
