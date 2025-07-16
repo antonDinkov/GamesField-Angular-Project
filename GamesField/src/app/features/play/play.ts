@@ -11,7 +11,7 @@ import { Game } from '../../models/game.model';
     styleUrl: './play.css'
 })
 export class Play implements OnInit {
-    safeUrl!: SafeResourceUrl;
+    safeUrl!: string;
 
     constructor(
         private route: ActivatedRoute,
@@ -21,11 +21,19 @@ export class Play implements OnInit {
 
     ngOnInit(): void {
         const id = this.route.snapshot.paramMap.get('id');
+        console.log(id);
+        
         if (id) {
             this.getById.getGameById(id).subscribe((game: Game) => {
-                this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(game.iframeUrl);
+                console.log('Received game:', game);
+               
+                this.safeUrl = game.iframeUrl.trim();
             });
         }
+    }
+
+    getSafeUrl(url: string): SafeResourceUrl {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url)
     }
 }
 
