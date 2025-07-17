@@ -27,7 +27,7 @@
                         "styles": [
                             "src/styles.css"
                         ],
-                        "baseHref": "/GamesField/"
+                        "baseHref": "/GamesField-Angular-Project/"
                     },
                     "configurations": {
                         "production": {
