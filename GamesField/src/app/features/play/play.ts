@@ -28,6 +28,8 @@ export class Play implements OnInit {
                 console.log('Received game:', game);
                
                 this.safeUrl = game.iframeUrl.trim();
+                console.log(`This is the safe url: ${this.safeUrl}`);
+                
             });
         }
     }
