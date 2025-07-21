@@ -20,6 +20,5 @@ export class PlayBtn {
     startGame() {
         this.safeUrl = this.game.iframeUrl.trim();
         window.open(this.safeUrl, '_blank');
-        console.log('Fake deploy');
     }
 }
