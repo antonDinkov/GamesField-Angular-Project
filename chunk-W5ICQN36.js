@@ -1,0 +1,1 @@
+import{Fa as o,Ga as n,Ka as l,qa as a}from"./chunk-PMEFUR7P.js";var s=class e{static \u0275fac=function(t){return new(t||e)};static \u0275cmp=a({type:e,selectors:[["app-catalog"]],decls:2,vars:0,template:function(t,i){t&1&&(o(0,"p"),l(1,"catalog works!"),n())},encapsulation:2})};export{s as Catalog};
