@@ -16,7 +16,6 @@ export class Play implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private getById: GetById,
-        private sanitizer: DomSanitizer
     ) { }
 
     ngOnInit(): void {
@@ -29,13 +28,9 @@ export class Play implements OnInit {
                
                 this.safeUrl = game.iframeUrl.trim();
                 console.log(`This is the safe url: ${this.safeUrl}`);
-                
+                window.open(this.safeUrl, '_blank')
             });
         }
-    }
-
-    getSafeUrl(url: string): SafeResourceUrl {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(url)
     }
 }
 
