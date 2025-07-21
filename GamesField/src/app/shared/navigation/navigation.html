@@ -1,5 +1,5 @@
 <header>
-    <div class="brand"><a class="brand" href="/">Games Field</a></div>
+    <div class="brand"><a class="brand" routerLink="/">Games Field</a></div>
     <div class="searchField">
         <input type="search" name="search" id="search" placeholder="🔍Search...">
         <button id="searchBtn">Search</button>
@@ -7,9 +7,9 @@
     <nav>
         <ul>
             <!-- Use this for NOT LOGGED IN users -->
-            <li><a href="/catalog">Games-Catalog</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register">Register</a></li>
+            <li><a routerLink="/catalog">Games-Catalog</a></li>
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/register">Register</a></li>
 
             <!-- To use for LOGGED IN users, replace the above with this block:
         <li><a href="/games">Games</a></li>
