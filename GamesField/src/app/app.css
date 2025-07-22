@@ -8,4 +8,6 @@ main {
 
 .scrollable-right-side {
     height: 100%;
+    flex-grow: 1;
+    margin-right: 2em;
 }

@@ -3,7 +3,7 @@
     <h2>{{game.name}}</h2>
     <div>
         <app-play-btn [game]="game"></app-play-btn>
-        <a href="#">Details</a>
+        <a [routerLink]="['/details', game.name, game._id]">Details</a>
     </div>
     <p>{{game.description}}</p>
     <div class="feedback">
