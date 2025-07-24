@@ -8,7 +8,7 @@ import { Catalog } from './features/catalog/catalog';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Navigation, Footer, Filter, HomeBoard, Catalog],
+  imports: [RouterOutlet, Navigation, Footer, Filter],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
