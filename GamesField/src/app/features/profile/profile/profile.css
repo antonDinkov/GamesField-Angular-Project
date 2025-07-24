@@ -1,0 +1,102 @@
+#rightside {
+  margin-top: 3%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.profile-card {
+  background-color: #252525;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-picture {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #00ffcc;
+  margin-bottom: 1rem;
+}
+
+.username {
+  font-size: 1.5rem;
+  margin-bottom: 0.2rem;
+  color: #00ffcc;
+}
+
+.email {
+  font-size: 0.95rem;
+  color: #aaa;
+}
+
+.profile-info {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.profile-info p {
+  margin: 0.5rem 0;
+}
+
+.user-games {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.user-games h2 {
+  color: #00ffcc;
+  margin-bottom: 0.5rem;
+}
+
+.user-games ul {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.user-games li {
+  margin: 0.3rem 0;
+  padding-left: 0.5rem;
+  position: relative;
+}
+
+.user-games li::before {
+  content: '🎮';
+  position: absolute;
+  left: -1rem;
+}
+
+.upload-section {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.upload-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.upload-section input[type="file"] {
+  background-color: #1e1e1e;
+  color: #00ffcc;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
