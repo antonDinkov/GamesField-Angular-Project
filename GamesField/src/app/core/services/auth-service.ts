@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user.model';
 import { Observable } from 'rxjs';
@@ -8,6 +8,11 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class AuthService {
+    private _isLoggedIn = signal<boolean>(false);
+    readonly isLoggedIn = this._isLoggedIn.asReadonly();
+
+    private _user = signal<User | null>(null);
+    readonly user = this._user.asReadonly();
     private apiUrl = environment.apiUrl
     constructor(private httpClient: HttpClient) {}
 
