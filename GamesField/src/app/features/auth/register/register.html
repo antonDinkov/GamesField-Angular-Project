@@ -1,23 +1,44 @@
 <div id="rightside">
     <div class="register-card">
         <h1>REGISTER FORM</h1>
-        <form class="register-form">
+        <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit">
             <label for="first-name">First Name</label>
-            <input type="text" id="first-name" name="first-name" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'firstname')" type="text" id="first-name"
+                formControlName="firstname" required />
+            @if (formService.isControlInvalid(form, 'firstname')) {
+            <p class="error">{{formService.getFirstnameErrorMessage(form)}}</p>
+            }
+
 
             <label for="last-name">Last Name</label>
-            <input type="text" id="last-name" name="last-name" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'lastname')" type="text" id="last-name"
+                formControlName="lastname" required />
+            @if (formService.isControlInvalid(form, 'lastname')) {
+            <p>{{formService.getLastnameErrorMessage(form)}}</p>
+            }
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'email')" type="email" id="email"
+                formControlName="email" required />
+            @if (formService.isControlInvalid(form, 'email')) {
+            <p>{{formService.getEmailErrorMessage(form)}}</p>
+            }
 
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <div formGroupName="passwords" class="form">
+                <label for="password">Password</label>
+                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'password')" type="password" id="password" formControlName="password" required />
+                @if (formService.isNestedControlInvalid(form, 'passwords', 'password')) {
+                <p>{{formService.getPasswordErrorMessage(form, true)}}</p>
+                }
 
-            <label for="password">Repeat Password</label>
-            <input type="password" id="password" name="repass" required />
+                <label for="repass">Repeat Password</label>
+                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'repass')" type="password" id="repass" formControlName="repass" required />
+                @if (formService.isNestedControlInvalid(form, 'passwords', 'repass')) {
+                <p>{{formService.getRePasswordErrorMessage(form)}}</p>
+                }
+            </div>
 
-            <button type="submit">Register</button>
+            <button type="submit" [disabled]="formService.isFormInvalid(form)">Register</button>
         </form>
     </div>
 </div>

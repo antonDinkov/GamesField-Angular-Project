@@ -12,10 +12,10 @@ export class AuthFormService {
         return this.formBuilder.group({
             firstname: ['', [Validators.required, Validators.minLength(5)]],
             lastname: ['', [Validators.required, Validators.minLength(5)]],
-            email: ['', [Validators.required, Validators.pattern(/^(?=.{6,})[a-zA-Z][a-zA-Z0-9._-]*@gmail\.(com|bg)$/)]],
+            email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
-                rePassword: ['', [Validators.required]],
+                repass: ['', [Validators.required]],
             }, { validators: this.passwordMatchValidator })
         });
     }
@@ -40,13 +40,22 @@ export class AuthFormService {
     // --------- Validators ---------
     private passwordMatchValidator(passwordsControl: AbstractControl): ValidationErrors | null {
         const password = passwordsControl.get('password');
-        const rePassword = passwordsControl.get('rePassword');
+        const repass = passwordsControl.get('repass');
 
-        if (password && rePassword && password.value !== rePassword.value) {
-            return { passwordMismatch: true };
+        if (!password || !repass) return null;
+
+    const mismatch = password.value !== repass.value;
+
+    if (mismatch) {
+        repass.setErrors({ passwordMismatch: true }); // ✅ задаваме грешка директно на полето
+        return { passwordMismatch: true };
+    } else {
+        // Ако има други грешки, не ги трием
+        if (repass.hasError('passwordMismatch')) {
+            repass.setErrors(null);
         }
-
         return null;
+    }
     }
 
     // --------- Error Helpers ---------
@@ -72,7 +81,7 @@ export class AuthFormService {
     }
 
     getFirstnameErrorMessage(form: FormGroup): string {
-        const control = this.getControl(form, 'username');
+        const control = this.getControl(form, 'firstname');
         if (control?.errors?.['required']) {
             return 'First name is required!';
         }
@@ -83,7 +92,7 @@ export class AuthFormService {
     }
 
     getLastnameErrorMessage(form: FormGroup): string {
-        const control = this.getControl(form, 'username');
+        const control = this.getControl(form, 'lastname');
         if (control?.errors?.['required']) {
             return 'Last name is required!';
         }
@@ -119,7 +128,7 @@ export class AuthFormService {
     }
 
     getRePasswordErrorMessage(form: FormGroup): string {
-        const control = this.getNestedControl(form, 'passwords', 'rePassword');
+        const control = this.getNestedControl(form, 'passwords', 'repass');
         const group = form.get('passwords') as FormGroup;
 
         if (control?.errors?.['required']) {
@@ -147,8 +156,8 @@ export class AuthFormService {
         });
     }
 
-    isFormValid(form: FormGroup): boolean {
-        return form.valid;
+    isFormInvalid(form: FormGroup): boolean {
+        return form.invalid;
     }
 
     getRegisterFormValue(form: FormGroup) {
