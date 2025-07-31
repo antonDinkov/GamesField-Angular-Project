@@ -6,16 +6,17 @@
     </div>
     <nav>
         <ul>
+            <!-- To use for LOGGED IN users -->
+            @if(isLoggedIn()) {
+            <li><a routerLink="/catalog">Games-Catalog</a></li>
+            <li><a routerLink="/profile">My Profile</a></li>
+            <li><a routerLink="/logout">Logout</a></li>
+            } @else {
             <!-- Use this for NOT LOGGED IN users -->
             <li><a routerLink="/catalog">Games-Catalog</a></li>
             <li><a routerLink="/login">Login</a></li>
             <li><a routerLink="/register">Register</a></li>
-
-            <!-- To use for LOGGED IN users, replace the above with this block:
-        <li><a href="/games">Games</a></li>
-        <li><a href="/account">My Profile</a></li>
-        <li><a href="/logout">Logout</a></li>
-        -->
+            }
         </ul>
     </nav>
 </header>
