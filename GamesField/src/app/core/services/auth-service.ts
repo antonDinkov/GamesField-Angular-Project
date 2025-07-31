@@ -35,13 +35,14 @@ export class AuthService {
     }
 
     login(email: string, password: string): Observable<User> {
-        return this.httpClient.post<User>(`${this.apiUrl}/login`, { email, password }, { withCredentials: true })
+        return this.httpClient.post<{message: string, user: User}>(`${this.apiUrl}/login`, { email, password }, { withCredentials: true })
             .pipe(
-                tap((user) => {
+                tap((response) => {
                     this._isLoggedIn.set(true);
-                    this._user.set(user);
-                    localStorage.setItem('user', JSON.stringify(user));
-                })
+                    this._user.set(response.user);
+                    localStorage.setItem('user', JSON.stringify(response.user));
+                }),
+                map(response => response.user)
             )
     }
 

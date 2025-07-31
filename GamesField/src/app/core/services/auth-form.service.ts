@@ -23,7 +23,7 @@ export class AuthFormService {
     // --------- Login Form ---------
     createLoginForm(): FormGroup {
         return this.formBuilder.group({
-            email: ['', [Validators.required, Validators.pattern(/^(?=.{6,})[a-zA-Z][a-zA-Z0-9._-]*@gmail\.(com|bg)$/)]],
+            email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
             password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
         });
     }
@@ -75,7 +75,7 @@ export class AuthFormService {
             return 'Email is required!';
         }
         if (control?.errors?.['pattern']) {
-            return 'Email should be a valid Gmail address!';
+            return 'Email should be a valid email address!';
         }
         return '';
     }
@@ -86,7 +86,7 @@ export class AuthFormService {
             return 'First name is required!';
         }
         if (control?.errors?.['minlength']) {
-            return 'First Name should have at least 5 symbols!';
+            return 'First Name should have at least 4 symbols!';
         }
         return '';
     }
@@ -97,7 +97,7 @@ export class AuthFormService {
             return 'Last name is required!';
         }
         if (control?.errors?.['minlength']) {
-            return 'Last Name should have at least 5 symbols!';
+            return 'Last Name should have at least 4 symbols!';
         }
         return '';
     }
@@ -161,15 +161,15 @@ export class AuthFormService {
     }
 
     getRegisterFormValue(form: FormGroup) {
-        const { username, email, phone } = form.value;
-        const { password, rePassword } = form.value.passwords;
+        const { firstname, lastname, email } = form.value;
+        const { password, repass } = form.value.passwords;
 
         return {
-            username,
+            firstname,
+            lastname,
             email,
-            phone,
             password,
-            rePassword
+            repass
         };
     }
 

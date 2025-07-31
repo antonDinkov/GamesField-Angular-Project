@@ -22,8 +22,7 @@ export class Register {
 
     onSubmit(): void{
         if (!this.formService.isFormInvalid(this.form)) {
-            const {firstname, lastname, email} = this.form.value;
-            const  {password, repass} = this.form.value.passwords;
+            const {firstname, lastname, email, password, repass} = this.formService.getRegisterFormValue(this.form);
 
             this.authService.register(firstname, lastname, email, password, repass).subscribe({
                 next: (user) => {
