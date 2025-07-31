@@ -46,14 +46,14 @@ export class AuthService {
             )
     }
 
-    logout(): Observable<void> {
-        return this.httpClient.get<void>(`${this.apiUrl}/logout`, { withCredentials: true })
+    logout(): Observable<{ message: string }> {
+        return this.httpClient.get<{ message: string }>(`${this.apiUrl}/logout`, { withCredentials: true })
             .pipe(
-                tap((response) => {
+                tap(() => {
                     this._isLoggedIn.set(false);
                     this._user.set(null);
                     localStorage.removeItem('user');
                 })
-            )
+            );
     }
 }
