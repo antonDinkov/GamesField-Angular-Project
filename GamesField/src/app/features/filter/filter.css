@@ -21,5 +21,15 @@
 
 #leftside a{
     text-decoration: none;
-    color: white;
+    color: #91ffce;
+}
+
+#leftside a:hover{
+    color: #00e6b8;
+}
+
+#leftside p{
+    text-decoration: none;
+    color: #91ffce;
+    margin-bottom: 1em;
 }
