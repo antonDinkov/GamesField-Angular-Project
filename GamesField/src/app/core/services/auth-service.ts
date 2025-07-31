@@ -23,7 +23,7 @@ export class AuthService {
     }
 
     register(firstName: string, lastName: string, email: string, password: string, repass: string): Observable<User> {
-        return this.httpClient.post<{message: string, user: User}>(`${this.apiUrl}/register`, { firstName, lastName, email, password, repass })
+        return this.httpClient.post<{message: string, user: User}>(`${this.apiUrl}/register`, { firstName, lastName, email, password, repass }, { withCredentials: true })
             .pipe(
                 tap((response) => {
                     this._isLoggedIn.set(true);

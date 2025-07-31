@@ -10,8 +10,8 @@ export class AuthFormService {
     // --------- Register Form ---------
     createRegisterForm(): FormGroup {
         return this.formBuilder.group({
-            firstname: ['', [Validators.required, Validators.minLength(5)]],
-            lastname: ['', [Validators.required, Validators.minLength(5)]],
+            firstname: ['', [Validators.required, Validators.minLength(4)]],
+            lastname: ['', [Validators.required, Validators.minLength(4)]],
             email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
