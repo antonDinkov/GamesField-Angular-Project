@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user.model';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -23,13 +23,14 @@ export class AuthService {
     }
 
     register(firstName: string, lastName: string, email: string, password: string, repass: string): Observable<User> {
-        return this.httpClient.post<User>(`${this.apiUrl}/register`, { firstName, lastName, email, password, repass }, { withCredentials: true })
+        return this.httpClient.post<{message: string, user: User}>(`${this.apiUrl}/register`, { firstName, lastName, email, password, repass })
             .pipe(
-                tap((user) => {
+                tap((response) => {
                     this._isLoggedIn.set(true);
-                    this._user.set(user);
-                    localStorage.setItem('user', JSON.stringify(user));
-                })
+                    this._user.set(response.user);
+                    localStorage.setItem('user', JSON.stringify(response.user));
+                }),
+                map(response => response.user)
             )
     }
 

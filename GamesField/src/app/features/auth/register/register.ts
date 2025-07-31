@@ -20,5 +20,21 @@ export class Register {
         this.form = this.formService.createRegisterForm();
     }
 
-    onSubmit(){}
+    onSubmit(): void{
+        if (!this.formService.isFormInvalid(this.form)) {
+            const {firstname, lastname, email} = this.form.value;
+            const  {password, repass} = this.form.value.passwords;
+
+            this.authService.register(firstname, lastname, email, password, repass).subscribe({
+                next: (user) => {
+                    console.log('Registered user:', user);
+                    this.router.navigate(['/'])
+                },
+                error: (err) => {
+                    console.error('Registration failed:', err);
+                    this.formService.markFormTouched(this.form)
+                }
+            })
+        }
+    }
 }

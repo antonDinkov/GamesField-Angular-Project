@@ -1,7 +1,7 @@
 <div id="rightside">
     <div class="register-card">
         <h1>REGISTER FORM</h1>
-        <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit">
+        <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="first-name">First Name</label>
             <input [class.input-error]="formService.isControlInvalid(form, 'firstname')" type="text" id="first-name"
                 formControlName="firstname" required />
