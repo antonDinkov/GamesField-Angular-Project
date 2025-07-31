@@ -46,9 +46,14 @@ export class AuthService {
             )
     }
 
-    logout() {
-        this._user.set(null);
-        this._isLoggedIn.set(false);
-        localStorage.removeItem('user');
+    logout(): Observable<void> {
+        return this.httpClient.get<void>(`${this.apiUrl}/logout`, { withCredentials: true })
+            .pipe(
+                tap((response) => {
+                    this._isLoggedIn.set(false);
+                    this._user.set(null);
+                    localStorage.removeItem('user');
+                })
+            )
     }
 }
