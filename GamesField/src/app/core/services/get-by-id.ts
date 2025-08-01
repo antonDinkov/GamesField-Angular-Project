@@ -14,6 +14,6 @@ export class GetById {
     getGameById(id:string): Observable<GameDetailsResponse>{
         console.log('getGameById fn initialation');
         
-        return this.httpClient.get<GameDetailsResponse>(`${this.apiUrl}/catalog/${id}`);
+        return this.httpClient.get<GameDetailsResponse>(`${this.apiUrl}/catalog/${id}`, {withCredentials: true});
     }
 }

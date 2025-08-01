@@ -16,9 +16,14 @@
 
                 <div class="buttons">
                     <button class="play-button">Play</button>
+                    @if (isLoggedIn() && !isAuthor){
                     <button class="play-button">Like</button>
+                    }
+                    @if (isLoggedIn() && (isAuthor() === true)) {
                     <button class="play-button">Edit</button>
                     <button class="play-button">Delete</button>
+                    }
+
                 </div>
 
             </div>
