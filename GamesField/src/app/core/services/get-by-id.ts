@@ -12,8 +12,6 @@ export class GetById {
     private apiUrl = environment.apiUrl;
     constructor(private httpClient: HttpClient){}
     getGameById(id:string): Observable<GameDetailsResponse>{
-        console.log('getGameById fn initialation');
-        
         return this.httpClient.get<GameDetailsResponse>(`${this.apiUrl}/catalog/${id}`, {withCredentials: true});
     }
 }

@@ -23,8 +23,6 @@ export class Details implements OnInit {
     interactorsNames?: string;
 
     ngOnInit(): void {
-        console.log('Details initialation');
-
         this.route.paramMap.pipe(
             switchMap(params => {
                 const id = params.get('id')!;

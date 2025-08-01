@@ -16,7 +16,7 @@
 
                 <div class="buttons">
                     <button class="play-button">Play</button>
-                    @if (isLoggedIn() && !isAuthor){
+                    @if (isLoggedIn() && (isAuthor() === false)){
                     <button class="play-button">Like</button>
                     }
                     @if (isLoggedIn() && (isAuthor() === true)) {
