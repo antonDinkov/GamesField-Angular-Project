@@ -57,3 +57,8 @@
 .play-button:hover {
   background-color: #04b88a;
 }
+
+.buttons {
+    display: flex;
+    gap: 5%;
+}

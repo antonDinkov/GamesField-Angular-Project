@@ -1,19 +1,27 @@
+@if(gameInfo){
 <div class="container">
-    <h1 class="game-title">SquidGame.io</h1>
+    <h1 class="game-title">{{gameInfo.name}}</h1>
     <div class="game-details">
-        <img src="https://img.gamedistribution.com/8256a6e4d51c45c6abe055782066efed-1280…" alt="SquidGame.io Screenshot"
+        <img [src]="gameInfo.image" alt="no image"
             class="game-image" />
 
         <div class="info">
-            <p><strong>Manufacturer:</strong> NISHAD_Games</p>
-            <p><strong>Genre:</strong> .IO & Battle</p>
-            <p><strong>Views:</strong> 800</p>
-            <p><strong>Played:</strong> 500</p>
-            <p><strong>Instructions:</strong> WASD = Move, Space = Jump</p>
-            <p><strong>Description:</strong> Engage in free multiplayer survival! Compete in 7-minute minigames against
-                others.</p>
+            <p><strong>Manufacturer:</strong>{{gameInfo.manufacturer}}</p>
+            <p><strong>Genre:</strong>{{gameInfo.genre}}</p>
+            <p><strong>Views:</strong>{{gameInfo.views}}</p>
+            <p><strong>Played:</strong>{{gameInfo.played}}</p>
+            <p><strong>Likes:</strong>{{gameInfo.likes.length}}</p>
+            <p><strong>Instructions:</strong>{{gameInfo.instructions}}</p>
+            <p><strong>Description:</strong>{{gameInfo.description}}</p>
 
-            <button class="play-button">Играй</button>
+            <div class="buttons">
+                <button class="play-button">Play</button>
+                <button class="play-button">Like</button>
+                <button class="play-button">Edit</button>
+                <button class="play-button">Delete</button>
+            </div>
+
         </div>
     </div>
 </div>
+}

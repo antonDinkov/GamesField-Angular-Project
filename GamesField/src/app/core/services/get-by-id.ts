@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Game } from '../../models/game.model';
+import { Observable } from 'rxjs';
+import { GameDetailsResponse } from '../../models/gameDetailsResponse.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,9 @@ import { Game } from '../../models/game.model';
 export class GetById {
     private apiUrl = environment.apiUrl;
     constructor(private httpClient: HttpClient){}
-    getGameById(id:string){
-        return this.httpClient.get<Game>(`${this.apiUrl}/id/${id}`);
+    getGameById(id:string): Observable<GameDetailsResponse>{
+        console.log('getGameById fn initialation');
+        
+        return this.httpClient.get<GameDetailsResponse>(`${this.apiUrl}/catalog/${id}`);
     }
 }
