@@ -10,4 +10,5 @@ main {
     height: 100%;
     flex-grow: 1;
     margin-right: 2em;
+    overflow-x: auto;
 }

@@ -1,27 +1,30 @@
-@if(gameInfo){
-<div class="container">
-    <h1 class="game-title">{{gameInfo.name}}</h1>
-    <div class="game-details">
-        <img [src]="gameInfo.image" alt="no image"
-            class="game-image" />
+<div id="rigthside">
+    @if(gameInfo){
+    <div class="container">
+        <h1 class="game-title">{{gameInfo.name}}</h1>
+        <div class="game-details">
+            <img [src]="gameInfo.image" alt="no image" class="game-image" />
 
-        <div class="info">
-            <p><strong>Manufacturer:</strong>{{gameInfo.manufacturer}}</p>
-            <p><strong>Genre:</strong>{{gameInfo.genre}}</p>
-            <p><strong>Views:</strong>{{gameInfo.views}}</p>
-            <p><strong>Played:</strong>{{gameInfo.played}}</p>
-            <p><strong>Likes:</strong>{{gameInfo.likes.length}}</p>
-            <p><strong>Instructions:</strong>{{gameInfo.instructions}}</p>
-            <p><strong>Description:</strong>{{gameInfo.description}}</p>
+            <div class="info">
+                <p><strong>Manufacturer:</strong>{{gameInfo.manufacturer}}</p>
+                <p><strong>Genre:</strong>{{gameInfo.genre}}</p>
+                <p><strong>Views:</strong>{{gameInfo.views}}</p>
+                <p><strong>Played:</strong>{{gameInfo.played}}</p>
+                <p><strong>Likes:</strong>{{gameInfo.likes.length}}</p>
+                <p><strong>Instructions:</strong>{{gameInfo.instructions}}</p>
+                <p><strong>Description:</strong>{{gameInfo.description}}</p>
 
-            <div class="buttons">
-                <button class="play-button">Play</button>
-                <button class="play-button">Like</button>
-                <button class="play-button">Edit</button>
-                <button class="play-button">Delete</button>
+                <div class="buttons">
+                    <button class="play-button">Play</button>
+                    <button class="play-button">Like</button>
+                    <button class="play-button">Edit</button>
+                    <button class="play-button">Delete</button>
+                </div>
+
             </div>
-
         </div>
     </div>
+    } @else {
+    <p>LOADING...</p>
+    }
 </div>
-}
