@@ -11,8 +11,16 @@ export const routes: Routes = [
         loadComponent: () => import("./features/catalog/catalog").then(c => c.Catalog)
     },
     {
+        path: "create",
+        loadComponent: () => import("./features/create/create").then(c => c.Create)
+    },
+    {
         path: "details/:name/:id",
         loadComponent: ()=> import("./features/details/details").then(c => c.Details)
+    },
+    {
+        path: "profile",
+        loadComponent: () => import("./features/profile/profile/profile").then(c => c.Profile)
     },
     {
         path: "register",
