@@ -15,7 +15,7 @@
                 <p><strong>Description:</strong>{{gameInfo.description}}</p>
 
                 <div class="buttons">
-                    <button class="play-button">Play</button>
+                    <app-play-btn class="play-button" [game]="gameInfo"></app-play-btn>
                     @if (isLoggedIn() && (isAuthor() === false)){
                     <button class="play-button">Like</button>
                     }

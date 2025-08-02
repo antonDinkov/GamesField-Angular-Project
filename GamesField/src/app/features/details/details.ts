@@ -4,10 +4,11 @@ import { ActivatedRoute } from '@angular/router';
 import { GetById } from '../../core/services/get-by-id';
 import { switchMap } from 'rxjs';
 import { Game } from '../../models/game.model';
+import { PlayBtn } from '../../shared/common/play-btn/play-btn';
 
 @Component({
     selector: 'app-details',
-    imports: [],
+    imports: [PlayBtn],
     templateUrl: './details.html',
     styleUrl: './details.css'
 })
