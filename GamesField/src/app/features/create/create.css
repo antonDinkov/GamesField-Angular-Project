@@ -73,3 +73,18 @@
 .create-game-form button:hover {
     background-color: #00e6b8;
 }
+
+.input-error {
+    border-left-color: red !important;
+    border-color: red;
+}
+
+.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red;
+    padding-top: 0;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}

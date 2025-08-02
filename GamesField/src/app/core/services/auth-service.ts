@@ -15,6 +15,7 @@ export class AuthService {
     private _user = signal<User | null>(null);
     readonly user = this._user.asReadonly();
     private apiUrl = environment.apiUrl;
+    
     constructor(private httpClient: HttpClient) {
         this.checkSession().subscribe({
             next: (user) => {
