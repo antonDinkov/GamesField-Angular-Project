@@ -20,7 +20,6 @@ export class AuthService {
             next: (user) => {
                 this._user.set(user);
                 this._isLoggedIn.set(true);
-                /* localStorage.setItem('user', JSON.stringify(user)); */ // по избор
             },
             error: () => {
                 localStorage.removeItem('user');
