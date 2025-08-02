@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './create.css'
 })
 export class Create {
+    form!: FormGroup;
 
+    constructor(){
+        
+    }
 }
