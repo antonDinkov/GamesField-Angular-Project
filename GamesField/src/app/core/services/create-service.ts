@@ -12,7 +12,7 @@ export class CreateService {
 
     constructor(private httpClient: HttpClient) {}
 
-    create(name: string, manufacturer: string, genre: string, image: string, iframeUrl: string, description: string, instrictions: string): Observable<Game>{
-        return this.httpClient.post<Game>(`${this.apiUrl}/create`, {name, manufacturer, genre, image, iframeUrl, description, instrictions}, { withCredentials: true })
+    create(name: string, manufacturer: string, genre: string, image: string, iframeUrl: string, description: string, instructions: string): Observable<Game>{
+        return this.httpClient.post<Game>(`${this.apiUrl}/create`, {name, manufacturer, genre, image, iframeUrl, description, instructions}, { withCredentials: true })
     }
 }
