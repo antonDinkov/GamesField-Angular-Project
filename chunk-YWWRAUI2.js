@@ -1,0 +1,1 @@
+import{Ca as n,Za as o,_a as a,eb as l}from"./chunk-3UFXEZJ4.js";var s=class t{static \u0275fac=function(e){return new(e||t)};static \u0275cmp=n({type:t,selectors:[["app-delete"]],decls:2,vars:0,template:function(e,p){e&1&&(o(0,"p"),l(1,"delete works!"),a())},encapsulation:2})};export{s as Delete};
