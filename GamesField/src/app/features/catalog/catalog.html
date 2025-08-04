@@ -4,11 +4,6 @@
         @if (allGames.length > 0) {
         @for (game of allGames; track game._id) {
         <app-home-item [game]="game"></app-home-item>
-        <!-- <div class="game-card">
-        <img src="https://m.media-amazon.com/images/I/61mmjwPkQZL._UF1000,1000_QL80_.jpg" alt="Zombie Attack" />
-        <h2>{{game.name}}</h2>
-        <p>Survive the apocalypse, fight off zombies, and collect weapons!</p>
-    </div> -->
         }
         } @else {
         <p>Catalog is empty</p>

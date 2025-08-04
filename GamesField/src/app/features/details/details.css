@@ -61,4 +61,11 @@
 .buttons {
     display: flex;
     gap: 5%;
+    justify-content: center;
+}
+
+.buttons a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
 }

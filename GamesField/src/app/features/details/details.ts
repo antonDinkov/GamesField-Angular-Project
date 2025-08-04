@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { AuthService } from '../../core/services/auth-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { GetById } from '../../core/services/get-by-id';
 import { switchMap } from 'rxjs';
 import { Game } from '../../models/game.model';
@@ -8,7 +8,7 @@ import { PlayBtn } from '../../shared/common/play-btn/play-btn';
 
 @Component({
     selector: 'app-details',
-    imports: [PlayBtn],
+    imports: [PlayBtn, RouterLink],
     templateUrl: './details.html',
     styleUrl: './details.css'
 })

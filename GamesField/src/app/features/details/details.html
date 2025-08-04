@@ -20,8 +20,10 @@
                     <button class="play-button">Like</button>
                     }
                     @if (isLoggedIn() && (isAuthor() === true)) {
-                    <button class="play-button">Edit</button>
-                    <button class="play-button">Delete</button>
+                        <a class="play-button" [routerLink]="['/details', gameInfo.name, gameInfo._id, 'edit']">Edit</a>
+                        <a class="play-button" [routerLink]="['/details', gameInfo.name, gameInfo._id, 'delete']">Delete</a>
+                    <!-- <button class="play-button">Edit</button>
+                    <button class="play-button">Delete</button> -->
                     }
 
                 </div>

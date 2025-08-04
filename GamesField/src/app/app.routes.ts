@@ -19,6 +19,14 @@ export const routes: Routes = [
         loadComponent: ()=> import("./features/details/details").then(c => c.Details)
     },
     {
+        path: "details/:name/:id/edit",
+        loadComponent: ()=> import("./features/details/edit/edit").then(c => c.Edit)
+    },
+    {
+        path: "details/:name/:id/delete",
+        loadComponent: ()=> import("./features/details/delete/delete").then(c => c.Delete)
+    },
+    {
         path: "profile",
         loadComponent: () => import("./features/profile/profile/profile").then(c => c.Profile)
     },
