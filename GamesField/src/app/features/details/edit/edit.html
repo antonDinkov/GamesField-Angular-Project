@@ -1,29 +1,48 @@
 <div id="rightside">
     <div class="edit-game-card">
         <h1>Edit Game</h1>
-        <form class="edit-game-form">
+        <form class="edit-game-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="title">Name</label>
-            <input type="text" id="title" name="title" value="SquidGame.io" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'title')" type="text" id="title" formControlName="title" />
+            @if (formService.isControlInvalid(form, 'title')) {
+            <p class="error">{{formService.getTitleErrorMessage(form)}}</p>
+            }
 
             <label for="manufacturer">Manufacturer</label>
-            <input type="text" id="manufacturer" name="manufacturer" value="NISHAD_Games" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'manufacturer')" type="text" id="manufacturer" formControlName="manufacturer" />
+            @if (formService.isControlInvalid(form, 'manufacturer')) {
+            <p class="error">{{formService.getManufacturerErrorMessage(form)}}</p>
+            }
 
             <label for="genre">Genre</label>
-            <input type="text" id="genre" name="genre" value=".IO & Battle" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'genre')" type="text" id="genre" formControlName="genre" />
+            @if (formService.isControlInvalid(form, 'genre')) {
+            <p class="error">{{formService.getGenreErrorMessage(form)}}</p>
+            }
 
             <label for="instructions">Instructions</label>
-            <input type="text" id="instructions" name="instructions" value="WASD = Move, Space = Jump" required />
+            <textarea [class.input-error]="formService.isControlInvalid(form, 'instructions')" id="instructions" formControlName="instructions" rows="4"></textarea>
+            @if (formService.isControlInvalid(form, 'instructions')) {
+            <p class="error">{{formService.getInstructionsErrorMessage(form)}}</p>
+            }
 
             <label for="description">Description</label>
-            <textarea id="description" name="description" rows="4" required>
-Engage in free multiplayer survival! Compete in 7-minute minigames against others.
-        </textarea>
+            <textarea [class.input-error]="formService.isControlInvalid(form, 'description')" id="description" formControlName="description" rows="4"></textarea>
+            @if (formService.isControlInvalid(form, 'description')) {
+            <p class="error">{{formService.getDescriptionErrorMessage(form)}}</p>
+            }
 
             <label for="imageUrl">Image URL</label>
-            <input type="url" id="imageUrl" name="imageUrl" value="https://img.gamedistribution.com/..." required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'imageUrl')" type="url" id="imageUrl" formControlName="imageUrl" />
+            @if (formService.isControlInvalid(form, 'imageUrl')) {
+            <p class="error">{{formService.getImageUrlErrorMessage(form)}}</p>
+            }
 
             <label for="gameUrl">Game URL</label>
-            <input type="url" id="gameUrl" name="gameUrl" value="https://img.gamedistribution.com/..." required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'gameUrl')" type="url" id="gameUrl" formControlName="gameUrl" />
+            @if (formService.isControlInvalid(form, 'gameUrl')) {
+            <p class="error">{{formService.getGameUrlErrorMessage(form)}}</p>
+            }
 
             <button type="submit">Save</button>
         </form>
