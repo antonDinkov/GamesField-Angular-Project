@@ -16,7 +16,7 @@
 
                 <div class="buttons">
                     <app-play-btn class="play-button" [game]="gameInfo"></app-play-btn>
-                    @if (isLoggedIn() && (isAuthor() === false)){
+                    @if (isLoggedIn() && (isAuthor() === false) && (hasInteracted === false)){
                     <button class="play-button" (click)="onLike()">Like</button>
                     }
                     @if (isLoggedIn() && (isAuthor() === true)) {

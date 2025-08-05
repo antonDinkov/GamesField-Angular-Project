@@ -45,6 +45,8 @@ export class Details implements OnInit {
     }
 
     onLike () {
+        
+        
         this.likeService.likeTheGame(this.id).subscribe(response => {
             this.gameInfo = response;
         });
