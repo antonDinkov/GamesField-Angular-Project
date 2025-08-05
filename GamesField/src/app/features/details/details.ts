@@ -5,6 +5,7 @@ import { GetById } from '../../core/services/get-by-id';
 import { switchMap } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { PlayBtn } from '../../shared/common/play-btn/play-btn';
+import { LikeService } from '../../core/services/like.service';
 
 @Component({
     selector: 'app-details',
@@ -16,6 +17,7 @@ export class Details implements OnInit {
     isLoggedIn = inject(AuthService).isLoggedIn;
     private gameService = inject(GetById);
     private route = inject(ActivatedRoute);
+    id: string = '';
     gameInfo?: Game;
     isAuthor = signal<boolean>(false);
     username?: string;
@@ -23,11 +25,14 @@ export class Details implements OnInit {
     interactionCount?: number;
     interactorsNames?: string;
 
+    likeService = inject(LikeService);
+    likes = this.likeService.like$();
+
     ngOnInit(): void {
         this.route.paramMap.pipe(
             switchMap(params => {
-                const id = params.get('id')!;
-                return this.gameService.getGameById(id);
+                this.id = params.get('id')!;
+                return this.gameService.getGameById(this.id);
             })
         ).subscribe(response => {
             this.gameInfo = response.post;
@@ -36,6 +41,12 @@ export class Details implements OnInit {
             this.hasInteracted = response.hasInteracted;
             this.interactionCount = response.interactionCount;
             this.interactorsNames = response.interactorsNames;
+        });
+    }
+
+    onLike () {
+        this.likeService.likeTheGame(this.id).subscribe(response => {
+            this.gameInfo = response;
         });
     }
 }

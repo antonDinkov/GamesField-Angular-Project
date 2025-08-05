@@ -17,7 +17,7 @@
                 <div class="buttons">
                     <app-play-btn class="play-button" [game]="gameInfo"></app-play-btn>
                     @if (isLoggedIn() && (isAuthor() === false)){
-                    <button class="play-button">Like</button>
+                    <button class="play-button" (click)="onLike()">Like</button>
                     }
                     @if (isLoggedIn() && (isAuthor() === true)) {
                         <a class="play-button" [routerLink]="['/details', gameInfo.name, gameInfo._id, 'edit']">Edit</a>
