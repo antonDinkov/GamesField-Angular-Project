@@ -49,6 +49,7 @@ export class Details implements OnInit {
         
         this.likeService.likeTheGame(this.id).subscribe(response => {
             this.gameInfo = response;
+            this.hasInteracted = true;
         });
     }
 }
