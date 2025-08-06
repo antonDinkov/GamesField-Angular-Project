@@ -3,12 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Game } from '../../models/game.model';
 import { GamesSelection } from '../../core/services/games-selection';
+import { HomeItem } from '../home/home-item/home-item';
 
 @Component({
-  standalone: true,
   selector: 'app-search',
-  templateUrl: './search.html', // може да го добавиш по-късно
-  imports: [CommonModule],
+  imports: [HomeItem],
+  templateUrl: './search.html',
+  styleUrls: ['./search.css']
 })
 export class Search {
   private route = inject(ActivatedRoute);

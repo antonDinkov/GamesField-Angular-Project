@@ -1,40 +1,15 @@
-<p>It works</p>
-<!-- <div id="rightside">
-    <h1>Games Catalog</h1>
+<div id="rightside">
+    <h1>RESULTS:</h1>
+    
     <section class="game-list">
-        @if (allGames.length > 0) {
-        @for (game of allGames; track game._id) {
-        <app-home-item [game]="game"></app-home-item>
-        }
+        @if (results().length > 0) {
+            @for (game of results(); track game._id) {
+                <app-home-item [game]="game"></app-home-item>
+            }
         } @else {
-        <p>Catalog is empty</p>
+            <p>
+                No Results found for your query!
+            </p>
         }
-
     </section>
-</div> -->
-
-
-
-
-<!-- <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <label>
-    <input type="radio" formControlName="searchBy" value="name" />
-    Search by Name
-  </label>
-  <label>
-    <input type="radio" formControlName="searchBy" value="genre" />
-    Search by Genre
-  </label>
-
-  <input type="text" formControlName="searchTerm" placeholder="Search..." />
-  <button type="submit">Search</button>
-</form>
-
-<div *ngIf="results().length > 0">
-  <h3>Results:</h3>
-  <ul>
-    <li *ngFor="let game of results()">
-      {{ game.name }} – {{ game.genre }}
-    </li>
-  </ul>
-</div> -->
+</div>
