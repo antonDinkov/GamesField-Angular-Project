@@ -1,23 +1,49 @@
 <header>
-    <div class="brand"><a class="brand" routerLink="/">Games Field</a></div>
-    <div class="searchField">
-        <input type="search" name="search" id="search" placeholder="🔍Search...">
-        <button id="searchBtn">Search</button>
-    </div>
-    <nav>
-        <ul>
-            <!-- To use for LOGGED IN users -->
-            @if(isLoggedIn()) {
-            <li><a routerLink="/catalog">Games-Catalog</a></li>
-            <li><a routerLink="/create">Create New Game</a></li>
-            <li><a routerLink="/profile">My Profile</a></li>
-            <li><a routerLink="/logout">Logout</a></li>
-            } @else {
-            <!-- Use this for NOT LOGGED IN users -->
-            <li><a routerLink="/catalog">Games-Catalog</a></li>
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/register">Register</a></li>
-            }
-        </ul>
-    </nav>
+  <div class="brand">
+    <a class="brand" routerLink="/">Games Field</a>
+  </div>
+
+  <form class="searchField" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <input
+      type="search"
+      formControlName="search"
+      id="search"
+      placeholder="🔍Search..."
+    />
+
+    <label>
+      <input
+        type="radio"
+        formControlName="searchBy"
+        value="name"
+      />
+      By Name
+    </label>
+
+    <label>
+      <input
+        type="radio"
+        formControlName="searchBy"
+        value="genre"
+      />
+      By Genre
+    </label>
+
+    <button type="submit" id="searchBtn">Search</button>
+  </form>
+
+  <nav>
+    <ul>
+      @if(isLoggedIn()) {
+        <li><a routerLink="/catalog">Games-Catalog</a></li>
+        <li><a routerLink="/create">Create New Game</a></li>
+        <li><a routerLink="/profile">My Profile</a></li>
+        <li><a routerLink="/logout">Logout</a></li>
+      } @else {
+        <li><a routerLink="/catalog">Games-Catalog</a></li>
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      }
+    </ul>
+  </nav>
 </header>

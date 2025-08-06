@@ -41,5 +41,9 @@ export const routes: Routes = [
     {
         path: "logout",
         loadComponent: () => import("./features/auth/logout/logout").then(c => c.Logout)
+    },
+    {
+        path: "search",
+        loadComponent: () => import("./features/search/search").then(c => c.Search)
     }
 ];

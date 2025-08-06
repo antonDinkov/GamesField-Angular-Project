@@ -18,6 +18,8 @@ header {
 #search {
     border-radius: 0.5em;
     width: 80%;
+    padding-left: 1em;
+    margin-right: 1em;
 }
 
 #searchBtn {
