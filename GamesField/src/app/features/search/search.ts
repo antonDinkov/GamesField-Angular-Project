@@ -4,42 +4,47 @@ import { ActivatedRoute } from '@angular/router';
 import { Game } from '../../models/game.model';
 import { GamesSelection } from '../../core/services/games-selection';
 import { HomeItem } from '../home/home-item/home-item';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-search',
-  imports: [HomeItem],
-  templateUrl: './search.html',
-  styleUrls: ['./search.css']
+    selector: 'app-search',
+    imports: [HomeItem],
+    templateUrl: './search.html',
+    styleUrls: ['./search.css']
 })
 export class Search {
-  private route = inject(ActivatedRoute);
-  private gamesService = inject(GamesSelection);
+    private route = inject(ActivatedRoute);
+    private gamesService = inject(GamesSelection);
 
-  // сигнал за съхранение на резултатите
-  results = signal<Game[]>([]);
-  searchTerm = signal('');
-  searchBy = signal<'name' | 'genre'>('name');
+    // сигнал за съхранение на резултатите
+    results = signal<Game[]>([]);
+    searchTerm = signal('');
+    searchBy = signal<'name' | 'genre'>('name');
 
-  constructor() {
-    // следи query params и прави заявка при промяна
-    effect(() => {
-      const params = this.route.snapshot.queryParamMap;
-      const search = params.get('search') || '';
-      const by = (params.get('by') as 'name' | 'genre') || 'name';
+    private queryParamsSub!: Subscription;
 
-      if (search.trim()) {
-        this.searchTerm.set(search);
-        this.searchBy.set(by);
+    constructor() {
+        this.queryParamsSub = this.route.queryParams.subscribe(params => {
+            const search = params['search'] || '';
+            const by = (params['by'] as 'name' | 'genre') || 'name';
 
-        this.gamesService.search(search, by).subscribe({
-          next: (games) => {
-            this.results.set(games);
-            console.log(this.results()[0].name);
-            
-        },
-          error: (err) => console.error('Search error:', err)
+            if (search.trim()) {
+                this.searchTerm.set(search);
+                this.searchBy.set(by);
+
+                this.gamesService.search(search, by).subscribe({
+                    next: (games) => this.results.set(games),
+                    error: (err) => console.error('Search error:', err)
+                });
+            } else {
+                this.results.set([]);
+            }
         });
-      }
-    });
-  }
+    }
+
+    ngOnDestroy() {
+        if (this.queryParamsSub) {
+            this.queryParamsSub.unsubscribe();
+        }
+    }
 }
