@@ -2,7 +2,7 @@
     <img [src]="game.image" [alt]="game.name + ' image'" />
     <h2>{{game.name}}</h2>
     <div>
-        <app-play-btn [game]="game"></app-play-btn>
+        <app-play-btn [game]="game" (played)="onPushButton($event)"></app-play-btn>
         <a [routerLink]="['/details', game.name, game._id]">Details</a>
     </div>
     <p>{{game.description}}</p>

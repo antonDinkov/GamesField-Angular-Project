@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, output, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../core/services/auth-service';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { GetById } from '../../core/services/get-by-id';
@@ -24,6 +24,7 @@ export class Details implements OnInit {
     hasInteracted?: boolean;
     interactionCount?: number;
     interactorsNames?: string;
+    played = signal<number>(0);
 
     likeService = inject(LikeService);
     likes = this.likeService.like$();
@@ -32,6 +33,7 @@ export class Details implements OnInit {
         this.route.paramMap.pipe(
             switchMap(params => {
                 this.id = params.get('id')!;
+                this.likeService.interactWithTheGame(this.id, 'views').subscribe();
                 return this.gameService.getGameById(this.id);
             })
         ).subscribe(response => {
@@ -41,15 +43,18 @@ export class Details implements OnInit {
             this.hasInteracted = response.hasInteracted;
             this.interactionCount = response.interactionCount;
             this.interactorsNames = response.interactorsNames;
+            this.played.set(response.post.played);
         });
     }
 
     onLike () {
-        
-        
-        this.likeService.likeTheGame(this.id).subscribe(response => {
+        this.likeService.interactWithTheGame(this.id, 'like').subscribe(response => {
             this.gameInfo = response;
             this.hasInteracted = true;
         });
+    }
+
+    onPushButton(newPlayCount: number): void {
+        this.played.set(newPlayCount);
     }
 }

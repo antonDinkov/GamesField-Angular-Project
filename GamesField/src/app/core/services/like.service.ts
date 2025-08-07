@@ -11,13 +11,19 @@ export class LikeService {
     private apiUrl = environment.apiUrl
     private _like = signal<number | null>(null);
     like$ = this._like.asReadonly();
+    private _views = signal<number | null>(null);
+    views$ = this._views.asReadonly();
+    private _played = signal<number | null>(null);
+    played$ = this._played.asReadonly();
     
     constructor(private httpClient: HttpClient) {};
 
-    likeTheGame(id: string): Observable<Game> {
-        const game = this.httpClient.get<Game>(`${this.apiUrl}/catalog/${id}/interact`, {withCredentials: true}).pipe(
+    interactWithTheGame(id: string, interaction: string): Observable<Game> {
+        const game = this.httpClient.post<Game>(`${this.apiUrl}/catalog/${id}/interact`, { interaction }, {withCredentials: true}).pipe(
             tap (response => {
                 this._like.set(response.likes.length);
+                this._views.set(response.views);
+                this._played.set(response.played);
                 return response
             })
         )

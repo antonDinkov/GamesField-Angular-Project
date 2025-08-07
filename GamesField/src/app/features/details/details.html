@@ -9,13 +9,13 @@
                 <p><strong>Manufacturer:</strong>{{gameInfo.manufacturer}}</p>
                 <p><strong>Genre:</strong>{{gameInfo.genre}}</p>
                 <p><strong>Views:</strong>{{gameInfo.views}}</p>
-                <p><strong>Played:</strong>{{gameInfo.played}}</p>
+                <p><strong>Played:</strong>{{played()}}</p>
                 <p><strong>Likes:</strong>{{gameInfo.likes.length}}</p>
                 <p><strong>Instructions:</strong>{{gameInfo.instructions}}</p>
                 <p><strong>Description:</strong>{{gameInfo.description}}</p>
 
                 <div class="buttons">
-                    <app-play-btn class="play-button" [game]="gameInfo"></app-play-btn>
+                    <app-play-btn class="play-button" [game]="gameInfo" (played)="onPushButton($event)"></app-play-btn>
                     @if (isLoggedIn() && (isAuthor() === false) && (hasInteracted === false)){
                     <button class="play-button" (click)="onLike()">Like</button>
                     }
