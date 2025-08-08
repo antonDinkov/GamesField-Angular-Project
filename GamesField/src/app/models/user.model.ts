@@ -4,6 +4,6 @@ export interface User {
     email: string,
     password: string,
     picture: string,
-    lastPlayed: string,
+    lastPlayed: string | null,
     myGames: string[]
 }

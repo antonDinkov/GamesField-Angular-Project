@@ -48,7 +48,7 @@ export class Details implements OnInit {
     }
 
     onLike () {
-        this.likeService.interactWithTheGame(this.id, 'like').subscribe(response => {
+        this.likeService.interactWithTheGame(this.id, 'likes').subscribe(response => {
             this.gameInfo = response;
             this.hasInteracted = true;
         });

@@ -1,24 +1,30 @@
 <div id="rightside">
+    @if (currentUser) {
     <div class="profile-card">
         <div class="profile-header">
             <img src="assets/uploads/profile.jpg" alt="User Profile Picture" class="profile-picture" />
-            <h1 class="username">Иван Иванов</h1>
-            <p class="email">ivan&#64;example.com</p>
+            <h1 class="username">{{currentUser.firstName}} {{currentUser.lastName}}</h1>
+            <p class="email">{{currentUser.email}}</p>
         </div>
 
         <div class="profile-info">
-            <p><strong>Име:</strong> Иван</p>
-            <p><strong>Фамилия:</strong> Иванов</p>
+            <p><strong>Име:</strong> {{currentUser.firstName}}</p>
+            <p><strong>Фамилия:</strong> {{currentUser.lastName}}</p>
             <p><strong>Последно играна игра:</strong> SquidGame.io</p>
         </div>
 
         <div class="user-games">
             <h2>Моите игри</h2>
+            @if(myGames.length > 0){
             <ul>
-                <li>SquidGame.io</li>
-                <li>BattleSpace</li>
-                <li>ClickRunner</li>
+                @for(game of myGames; track game){
+                <li>{{game}}</li>
+                }
             </ul>
+            }@else{
+            <p>No liked games</p>
+            }
+
         </div>
 
         <div class="upload-section">
@@ -26,4 +32,8 @@
             <input type="file" id="upload" accept="image/*" />
         </div>
     </div>
+    }@else {
+    <p>Loading...</p>
+    }
+
 </div>
