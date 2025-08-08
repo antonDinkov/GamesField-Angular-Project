@@ -31,9 +31,13 @@
             <label for="upload">Change profile picture:</label>
             <input type="file" id="upload" accept="image/*" />
         </div>
+        <div class="buttons">
+            <a href="javascript:void(0)" (click)="goBack()">⬅ Back</a>
+            <a [routerLink]="['/profile', currentUser._id, 'edit']">Edit</a>
+            <a [routerLink]="['/profile', currentUser._id, 'delete']">Delete</a>
+        </div>
     </div>
     }@else {
     <p>Loading...</p>
     }
-
 </div>

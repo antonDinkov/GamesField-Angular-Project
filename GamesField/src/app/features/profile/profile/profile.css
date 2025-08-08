@@ -100,3 +100,30 @@
   padding: 0.5rem;
   cursor: pointer;
 }
+
+.buttons {
+    margin-top: 1em;
+    display: flex;
+    gap: 5%;
+    justify-content: center;
+}
+
+.buttons a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    height: 20px;
+    min-width: 80px;
+    background-color: #00ffcc;
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}

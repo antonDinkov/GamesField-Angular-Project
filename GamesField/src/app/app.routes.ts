@@ -31,6 +31,10 @@ export const routes: Routes = [
         loadComponent: () => import("./features/profile/profile/profile").then(c => c.Profile)
     },
     {
+        path: "profile/:id/edit",
+        loadComponent: () => import("./features/profile/edit/edit").then(c => c.Edit)
+    },
+    {
         path: "register",
         loadComponent: () => import("./features/auth/register/register").then(c => c.Register)
     },

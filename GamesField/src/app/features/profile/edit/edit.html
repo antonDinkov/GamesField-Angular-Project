@@ -1,23 +1,24 @@
 <div id="rightside">
     <div class="edit-profile-card">
-        <h1>Редактирай профила</h1>
+        <h1>Edit Profile</h1>
         <form class="edit-profile-form">
-            <label for="firstName">Име</label>
+            <label for="firstName">First name</label>
             <input type="text" id="firstName" name="firstName" value="Иван" required />
 
-            <label for="lastName">Фамилия</label>
+            <label for="lastName">Last Name</label>
             <input type="text" id="lastName" name="lastName" value="Иванов" required />
 
-            <label for="email">Имейл</label>
+            <label for="email">Email</label>
             <input type="email" id="email" name="email" value="ivan@example.com" required />
 
-            <label for="password">Нова парола</label>
+            <label for="password">New Password</label>
             <input type="password" id="password" name="password" />
 
-            <label for="picture">Профилна снимка</label>
+            <label for="picture">Profile Picture</label>
             <input type="file" id="picture" name="picture" accept="image/*" />
 
-            <button type="submit">Запази промените</button>
+            <button type="submit">Save The Changes</button>
+            <button (click)="goBack(); $event.preventDefault()">CANCEL</button>
         </form>
     </div>
 </div>
