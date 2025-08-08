@@ -1,0 +1,1 @@
+import{Ab as o,Db as a,O as i,S as r}from"./chunk-JLINGDUW.js";var n=class t{constructor(e){this.httpClient=e}apiUrl=a.apiUrl;getGameById(e){return this.httpClient.get(`${this.apiUrl}/catalog/${e}`,{withCredentials:!0})}static \u0275fac=function(p){return new(p||t)(r(o))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{n as a};
