@@ -8,13 +8,13 @@
         </div>
 
         <div class="profile-info">
-            <p><strong>Име:</strong> {{currentUser.firstName}}</p>
-            <p><strong>Фамилия:</strong> {{currentUser.lastName}}</p>
-            <p><strong>Последно играна игра:</strong> SquidGame.io</p>
+            <p><strong>First Name:</strong> {{currentUser.firstName}}</p>
+            <p><strong>Last Name:</strong> {{currentUser.lastName}}</p>
+            <p><strong>Last played game:</strong> SquidGame.io</p>
         </div>
 
         <div class="user-games">
-            <h2>Моите игри</h2>
+            <h2>My games</h2>
             @if(myGames.length > 0){
             <ul>
                 @for(game of myGames; track game){
@@ -28,7 +28,7 @@
         </div>
 
         <div class="upload-section">
-            <label for="upload">Смени профилна снимка:</label>
+            <label for="upload">Change profile picture:</label>
             <input type="file" id="upload" accept="image/*" />
         </div>
     </div>
