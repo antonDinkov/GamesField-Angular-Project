@@ -14,27 +14,27 @@
             <input [class.input-error]="formService.isControlInvalid(form, 'lastname')" type="text" id="last-name"
                 formControlName="lastname" required />
             @if (formService.isControlInvalid(form, 'lastname')) {
-            <p>{{formService.getLastnameErrorMessage(form)}}</p>
+            <p class="error">{{formService.getLastnameErrorMessage(form)}}</p>
             }
 
             <label for="email">Email</label>
             <input [class.input-error]="formService.isControlInvalid(form, 'email')" type="email" id="email"
                 formControlName="email" required />
             @if (formService.isControlInvalid(form, 'email')) {
-            <p>{{formService.getEmailErrorMessage(form)}}</p>
+            <p class="error">{{formService.getEmailErrorMessage(form)}}</p>
             }
 
             <div formGroupName="passwords" class="form">
                 <label for="password">Password</label>
                 <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'password')" type="password" id="password" formControlName="password" required />
                 @if (formService.isNestedControlInvalid(form, 'passwords', 'password')) {
-                <p>{{formService.getPasswordErrorMessage(form, true)}}</p>
+                <p class="error">{{formService.getPasswordErrorMessage(form, true)}}</p>
                 }
 
                 <label for="repass">Repeat Password</label>
                 <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'repass')" type="password" id="repass" formControlName="repass" required />
                 @if (formService.isNestedControlInvalid(form, 'passwords', 'repass')) {
-                <p>{{formService.getRePasswordErrorMessage(form)}}</p>
+                <p class="error">{{formService.getRePasswordErrorMessage(form)}}</p>
                 }
             </div>
 

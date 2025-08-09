@@ -16,12 +16,12 @@ export class EditProfileFormService {
         return this.formBuilder.group({
             firstName: [first, [Validators.required, Validators.minLength(4)]],
             lastName: [last, [Validators.required, Validators.minLength(4)]],
-            Email: [email, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
+            email: [email, [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
             passwords: this.formBuilder.group({
                 password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
                 repass: ['', [Validators.required]],
             }, { validators: this.passwordMatchValidator }),
-            picture: ['']
+            picture: [null]
         })
     }
 
@@ -67,7 +67,10 @@ export class EditProfileFormService {
     getFirstNameErrorMessage(form: FormGroup): string {
         const control = this.getControl(form, 'firstName');
         if (control?.errors?.['required']) {
-            return 'First Name is required!';
+            return 'First name is required!';
+        }
+        if (control?.errors?.['minlength']) {
+            return 'First Name should have at least 4 symbols!';
         }
         return '';
     }
@@ -75,7 +78,10 @@ export class EditProfileFormService {
     getLastNameErrorMessage(form: FormGroup): string {
         const control = this.getControl(form, 'lastName');
         if (control?.errors?.['required']) {
-            return 'Last Name is required!';
+            return 'Last name is required!';
+        }
+        if (control?.errors?.['minlength']) {
+            return 'Last Name should have at least 4 symbols!';
         }
         return '';
     }

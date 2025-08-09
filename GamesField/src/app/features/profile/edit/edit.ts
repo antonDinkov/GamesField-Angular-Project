@@ -21,12 +21,18 @@ export class Edit {
         this.form = this.formService.createProfileForm();
     };
 
-    onSubmit(){
+    onSubmit() {
 
     }
 
     goBack(): void {
         this.location.back();
+    }
+
+    onFileSelected(event: Event) {
+        const file = (event.target as HTMLInputElement).files?.[0] || null;
+        this.form.get('picture')?.setValue(file);
+        this.form.get('picture')?.updateValueAndValidity();
     }
 
 }

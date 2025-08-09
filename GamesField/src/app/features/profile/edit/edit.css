@@ -39,7 +39,7 @@
 
 .edit-profile-form input {
   padding: 0.7rem;
-  border: none;
+  border: 2px solid transparent;
   border-radius: 4px;
   background-color: #1e1e1e;
   color: #fff;
@@ -75,4 +75,18 @@
 
 .edit-profile-form button:hover {
   background-color: #00e6b8;
+}
+
+.input-error {
+    border-left-color: red !important;
+}
+
+.error {
+    text-align: left;
+    border-radius: 0.5em;
+    color: red;
+    padding-top: 0;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
 }
