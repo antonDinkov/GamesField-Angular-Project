@@ -23,6 +23,8 @@ export class Profile implements OnInit {
     ngOnInit(): void {
         this.authService.checkSession().subscribe(user => {
             this.currentUser = user;
+            localStorage.removeItem('user');
+            localStorage.setItem('user', JSON.stringify(user));
             if (this.currentUser && (this.currentUser?.myGames.length > 0)) {
                 for (const game of this.currentUser.myGames) {
                     this.getGameService.getGameById(game).subscribe(response => {

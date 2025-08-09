@@ -69,4 +69,8 @@ export class AuthService {
                 map(response => response.user)
             );
     }
+
+    updateUserInfo(){
+        
+    }
 }

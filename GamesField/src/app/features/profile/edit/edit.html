@@ -1,21 +1,27 @@
 <div id="rightside">
     <div class="edit-profile-card">
         <h1>Edit Profile</h1>
-        <form class="edit-profile-form">
+        <form class="edit-profile-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="firstName">First name</label>
-            <input type="text" id="firstName" name="firstName" value="Иван" required />
+            <input type="text" id="firstName" formControlName="firstName" value="Иван" required />
 
             <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" value="Иванов" required />
+            <input type="text" id="lastName" formControlName="lastName" value="Иванов" required />
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="ivan@example.com" required />
+            <input type="email" id="email" formControlName="email" value="ivan@example.com" required />
 
-            <label for="password">New Password</label>
-            <input type="password" id="password" name="password" />
+            <div class="edit-profile-form" formGroupName="passwords">
+                <label for="password">New Password</label>
+                <input type="password" id="password" formControlName="password" />
+
+                <label for="repass">Repeat New Password</label>
+                <input type="password" id="repass" formControlName="repass" />
+            </div>
+
 
             <label for="picture">Profile Picture</label>
-            <input type="file" id="picture" name="picture" accept="image/*" />
+            <input type="file" id="picture" formControlName="picture" accept="image/*" />
 
             <button type="submit">Save The Changes</button>
             <button class="back-button" (click)="goBack(); $event.preventDefault()">CANCEL</button>
