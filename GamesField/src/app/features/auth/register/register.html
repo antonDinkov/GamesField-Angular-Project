@@ -39,6 +39,7 @@
             </div>
 
             <button type="submit" [disabled]="formService.isFormInvalid(form)">Register</button>
+            <button class="back-button" (click)="goBack(); $event.preventDefault()">Cancel</button>
         </form>
     </div>
 </div>

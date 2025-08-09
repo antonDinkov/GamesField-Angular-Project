@@ -3,6 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CreateFormService } from '../../core/services/create-form.service';
 import { CreateService } from '../../core/services/create-service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create',
@@ -15,7 +16,7 @@ export class Create {
     private router = inject(Router)
     form!: FormGroup;
 
-    constructor(public formService: CreateFormService){
+    constructor(private location: Location, public formService: CreateFormService){
         this.form = formService.createCreateForm();
     }
 
@@ -30,5 +31,9 @@ export class Create {
                     this.formService.markFormTouched(this.form)
                 }
         })
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

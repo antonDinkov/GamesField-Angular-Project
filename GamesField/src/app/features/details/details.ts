@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { PlayBtn } from '../../shared/common/play-btn/play-btn';
 import { LikeService } from '../../core/services/like.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-details',
@@ -28,6 +29,8 @@ export class Details implements OnInit {
 
     likeService = inject(LikeService);
     likes = this.likeService.like$();
+
+    constructor(private location: Location) {}
 
     ngOnInit(): void {
         this.route.paramMap.pipe(
@@ -57,4 +60,9 @@ export class Details implements OnInit {
     onPushButton(newPlayCount: number): void {
         this.played.set(newPlayCount);
     }
+
+    goBack(): void {
+        this.location.back();
+    }
+
 }

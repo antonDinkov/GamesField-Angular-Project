@@ -2,14 +2,14 @@ import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-edit',
-  imports: [],
-  templateUrl: './edit.html',
-  styleUrl: './edit.css'
+    selector: 'app-edit',
+    imports: [],
+    templateUrl: './edit.html',
+    styleUrl: './edit.css'
 })
 export class Edit {
 
-    constructor(private location: Location) {}
+    constructor(private location: Location) { }
 
     /* private getGame = inject(GetById);
     private edit = inject(EditFormService)
@@ -59,7 +59,7 @@ export class Edit {
     } */
 
     goBack(): void {
-    this.location.back();
-  }
+        this.location.back();
+    }
 
 }

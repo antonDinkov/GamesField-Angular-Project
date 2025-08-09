@@ -15,6 +15,7 @@
                 <p><strong>Description:</strong>{{gameInfo.description}}</p>
 
                 <div class="buttons">
+                    <button class="back-button" (click)="goBack(); $event.preventDefault()">Go Back</button>
                     <app-play-btn class="play-button" [game]="gameInfo" (played)="onPushButton($event)"></app-play-btn>
                     @if (isLoggedIn() && (isAuthor() === false) && (hasInteracted === false)){
                     <button class="play-button" (click)="onLike()">Like</button>

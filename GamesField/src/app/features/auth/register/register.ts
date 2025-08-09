@@ -3,6 +3,7 @@ import { AuthFormService } from '../../../core/services/auth-form.service';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ export class Register {
     private router = inject(Router);
 
     form: FormGroup;
-    constructor(){
+    constructor(private location: Location){
         this.form = this.formService.createRegisterForm();
     }
 
@@ -35,5 +36,9 @@ export class Register {
                 }
             })
         }
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

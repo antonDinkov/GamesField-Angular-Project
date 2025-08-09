@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { CreateFormService } from '../../../core/services/create-form.service';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EditFormService } from '../../../core/services/edit-form.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-edit',
@@ -21,7 +22,7 @@ export class Edit implements OnInit {
     private id: string = '';
     private name: string = '';
 
-    constructor(private route: ActivatedRoute, private router: Router, public formService: CreateFormService) {
+    constructor(private location: Location, private route: ActivatedRoute, private router: Router, public formService: CreateFormService) {
         this.form = this.formService.createCreateForm();
     };
 
@@ -59,5 +60,9 @@ export class Edit implements OnInit {
                     this.formService.markFormTouched(this.form);
                 }
         })
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

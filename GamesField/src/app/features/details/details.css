@@ -54,6 +54,18 @@
   transition: background-color 0.3s ease;
 }
 
+.back-button {
+   color: red !important;
+   margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1.2rem;
+  background-color: #06d6a0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
 .play-button:hover {
   background-color: #04b88a;
 }

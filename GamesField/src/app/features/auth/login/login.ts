@@ -3,6 +3,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AuthFormService } from '../../../core/services/auth-form.service';
 import { AuthService } from '../../../core/services/auth-service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class Login {
 
     form: FormGroup;
 
-    constructor () {
+    constructor (private location: Location) {
         this.form = this.formService.createLoginForm();
     }
 
@@ -35,5 +36,9 @@ export class Login {
                 }
             })
         }
+    }
+
+    goBack(): void {
+        this.location.back();
     }
 }

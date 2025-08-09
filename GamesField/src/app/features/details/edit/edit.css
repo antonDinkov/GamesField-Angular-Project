@@ -73,3 +73,7 @@
 .edit-game-form button:hover {
   background-color: #00e6b8;
 }
+
+.back-button {
+   color: red !important;
+}

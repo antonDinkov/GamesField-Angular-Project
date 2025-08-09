@@ -108,6 +108,10 @@
     justify-content: center;
 }
 
+.back-button {
+   color: red !important;
+}
+
 .buttons a {
     text-decoration: none;
     display: flex;

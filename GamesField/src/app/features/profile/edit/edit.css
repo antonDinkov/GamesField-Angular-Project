@@ -69,6 +69,10 @@
   transition: background-color 0.2s ease;
 }
 
+.back-button {
+   color: red !important;
+}
+
 .edit-profile-form button:hover {
   background-color: #00e6b8;
 }

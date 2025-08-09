@@ -64,6 +64,10 @@
     transition: background-color 0.2s ease;
 }
 
+.back-button {
+   color: red !important;
+}
+
 .register-form button:hover {
     background-color: #00e6b8;
 }
