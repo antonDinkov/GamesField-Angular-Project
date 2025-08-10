@@ -40,7 +40,14 @@
             </div>
 
             <label for="pictureFile">Profile Picture</label>
-            <input type="file" id="pictureFile" (change)="onFileSelected($event)" accept="image/*" />
+            
+            @if(form.get('picture')?.value !== ''){
+            <img [src]="form.get('picture')?.value" alt="Profile preview" class="preview-img" />
+            <button type="button" (click)="removePicture()">Remove Picture</button>
+            }@else {
+                <input type="file" id="pictureFile" (change)="onFileSelected($event)" accept="image/*" />
+            }
+            
 
             <!-- Скрит контрол, който пази URL от Cloudinary -->
             <input type="hidden" formControlName="picture" />

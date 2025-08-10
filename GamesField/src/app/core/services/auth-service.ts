@@ -15,7 +15,7 @@ export class AuthService {
     private _user = signal<User | null>(null);
     readonly user = this._user.asReadonly();
     private apiUrl = environment.apiUrl;
-    
+
     constructor(private httpClient: HttpClient) {
         this.checkSession().subscribe({
             next: (user) => {
@@ -42,7 +42,7 @@ export class AuthService {
             )
     }
 
-    login(email: string, password: string): Observable<{message: string, user: User}> {
+    login(email: string, password: string): Observable<{ message: string, user: User }> {
         return this.httpClient.post<{ message: string, user: User }>(`${this.apiUrl}/login`, { email, password }, { withCredentials: true })
             .pipe(
                 tap((response) => {
@@ -70,10 +70,20 @@ export class AuthService {
             );
     }
 
-    updateUserInfo(payload: {}): Observable<User>{
+    updateUserInfo(payload: {}): Observable<User> {
         return this.httpClient.put<{ user: User }>(`${this.apiUrl}/update/profile`, payload, { withCredentials: true })
             .pipe(
                 map(response => response.user)
             );
+    }
+
+    removePicture(email: string): Observable<User> {
+        return this.httpClient
+            .put<{ user: User }>(
+                `${this.apiUrl}/update/profile/remove-picture`,
+                { email },
+                { withCredentials: true }
+            )
+            .pipe(map(response => response.user));
     }
 }

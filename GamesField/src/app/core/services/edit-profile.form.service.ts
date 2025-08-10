@@ -19,6 +19,7 @@ export class EditProfileFormService {
         const email = userInfo.email;
         const first = userInfo.firstName;
         const last = userInfo.lastName;
+        const pic = userInfo.picture;
         return this.formBuilder.group({
             firstName: [first, [Validators.required, Validators.minLength(4)]],
             lastName: [last, [Validators.required, Validators.minLength(4)]],
@@ -27,20 +28,23 @@ export class EditProfileFormService {
                 password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
                 repass: ['', [Validators.required]],
             }, { validators: this.passwordMatchValidator }),
-            picture: ['']
+            picture: [pic]
         })
     }
 
-    uploadPicture(file: File): Observable<string> {
+    uploadPicture(file: File): Observable<{ url: string, publicId: string }> {
         const formData = new FormData();
         formData.append('file', file);
         formData.append('upload_preset', this.UPLOAD_PRESET);
 
-        return this.httpClient.post<{ secure_url: string }>(
+        return this.httpClient.post<any>(
             `https://api.cloudinary.com/v1_1/${this.CLOUD_NAME}/image/upload`,
             formData
         ).pipe(
-            map(res => res.secure_url)
+            map(res => ({
+            url: res.secure_url,
+            publicId: res.public_id
+        }))
         );
     }
 
