@@ -3,39 +3,47 @@
         <h1>Edit Profile</h1>
         <form class="edit-profile-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="firstName">First name</label>
-            <input [class.input-error]="formService.isControlInvalid(form, 'firstName')" type="text" id="firstName" formControlName="firstName" value="Иван" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'firstName')" type="text" id="firstName"
+                formControlName="firstName" value="Иван" required />
             @if (formService.isControlInvalid(form, 'firstName')) {
             <p class="error">{{formService.getFirstNameErrorMessage(form)}}</p>
             }
 
             <label for="lastName">Last Name</label>
-            <input [class.input-error]="formService.isControlInvalid(form, 'lastName')" type="text" id="lastName" formControlName="lastName" value="Иванов" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'lastName')" type="text" id="lastName"
+                formControlName="lastName" value="Иванов" required />
             @if (formService.isControlInvalid(form, 'lastName')) {
             <p class="error">{{formService.getLastNameErrorMessage(form)}}</p>
             }
 
             <label for="email">Email</label>
-            <input [class.input-error]="formService.isControlInvalid(form, 'email')" type="email" id="email" formControlName="email" value="ivan@example.com" required />
+            <input [class.input-error]="formService.isControlInvalid(form, 'email')" type="email" id="email"
+                formControlName="email" value="ivan@example.com" required />
             @if (formService.isControlInvalid(form, 'email')) {
             <p class="error">{{formService.getEmailErrorMessage(form)}}</p>
             }
 
             <div class="edit-profile-form" formGroupName="passwords">
                 <label for="password">New Password</label>
-                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'password')" type="password" id="password" formControlName="password" />
+                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'password')"
+                    type="password" id="password" formControlName="password" />
                 @if (formService.isNestedControlInvalid(form, 'passwords', 'password')) {
                 <p class="error">{{formService.getPasswordErrorMessage(form, true)}}</p>
                 }
 
                 <label for="repass">Repeat New Password</label>
-                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'repass')" type="password" id="repass" formControlName="repass" />
+                <input [class.input-error]="formService.isNestedControlInvalid(form, 'passwords', 'repass')"
+                    type="password" id="repass" formControlName="repass" />
                 @if (formService.isNestedControlInvalid(form, 'passwords', 'repass')) {
                 <p class="error">{{formService.getRePasswordErrorMessage(form)}}</p>
                 }
             </div>
 
-            <label for="picture">Profile Picture</label>
-            <input type="file" id="picture" formControlName="picture" accept="image/*" (change)="onFileSelected($event)" />
+            <label for="pictureFile">Profile Picture</label>
+            <input type="file" id="pictureFile" (change)="onFileSelected($event)" accept="image/*" />
+
+            <!-- Скрит контрол, който пази URL от Cloudinary -->
+            <input type="hidden" formControlName="picture" />
 
             <button type="submit">Save The Changes</button>
             <button class="back-button" (click)="goBack(); $event.preventDefault()">CANCEL</button>

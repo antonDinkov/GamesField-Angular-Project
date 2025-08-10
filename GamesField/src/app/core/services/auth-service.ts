@@ -70,7 +70,10 @@ export class AuthService {
             );
     }
 
-    updateUserInfo(){
-        
+    updateUserInfo(payload: {}): Observable<User>{
+        return this.httpClient.put<{ user: User }>(`${this.apiUrl}/update/profile`, payload, { withCredentials: true })
+            .pipe(
+                map(response => response.user)
+            );
     }
 }

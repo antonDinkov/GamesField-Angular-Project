@@ -1,15 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class EditProfileFormService {
     private formBuilder = inject(FormBuilder);
+    private httpClient = inject(HttpClient);
+
+    private CLOUD_NAME = 'dsqegonee';
+    private UPLOAD_PRESET = 'my_unsigned_preset';
 
     createProfileForm(): FormGroup {
         const storedUser = localStorage.getItem('user');
-        const userInfo = storedUser? JSON.parse(storedUser) : '';
+        const userInfo = storedUser ? JSON.parse(storedUser) : '';
         const email = userInfo.email;
         const first = userInfo.firstName;
         const last = userInfo.lastName;
@@ -21,8 +27,21 @@ export class EditProfileFormService {
                 password: ['', [Validators.required, Validators.minLength(5), Validators.pattern(/^[a-zA-Z0-9]+$/)]],
                 repass: ['', [Validators.required]],
             }, { validators: this.passwordMatchValidator }),
-            picture: [null]
+            picture: ['']
         })
+    }
+
+    uploadPicture(file: File): Observable<string> {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', this.UPLOAD_PRESET);
+
+        return this.httpClient.post<{ secure_url: string }>(
+            `https://api.cloudinary.com/v1_1/${this.CLOUD_NAME}/image/upload`,
+            formData
+        ).pipe(
+            map(res => res.secure_url)
+        );
     }
 
     getNestedControl(form: FormGroup, groupName: string, controlName: string) {
@@ -35,18 +54,18 @@ export class EditProfileFormService {
 
         if (!password || !repass) return null;
 
-    const mismatch = password.value !== repass.value;
+        const mismatch = password.value !== repass.value;
 
-    if (mismatch) {
-        repass.setErrors({ passwordMismatch: true }); // ✅ задаваме грешка директно на полето
-        return { passwordMismatch: true };
-    } else {
-        // Ако има други грешки, не ги трием
-        if (repass.hasError('passwordMismatch')) {
-            repass.setErrors(null);
+        if (mismatch) {
+            repass.setErrors({ passwordMismatch: true }); // ✅ задаваме грешка директно на полето
+            return { passwordMismatch: true };
+        } else {
+            // Ако има други грешки, не ги трием
+            if (repass.hasError('passwordMismatch')) {
+                repass.setErrors(null);
+            }
+            return null;
         }
-        return null;
-    }
     }
 
     getControl(form: FormGroup, controlName: string) {
@@ -155,16 +174,16 @@ export class EditProfileFormService {
     }
 
     getProfileFormValue(form: FormGroup) {
-        const { firstname, lastname, email, picture } = form.value;
-        const { password, repass } = form.value.passwords;
+    const { firstName, lastName, email, picture } = form.value;
+    const { password, repass } = form.value.passwords;
 
-        return {
-            firstname,
-            lastname,
-            email,
-            picture,
-            password,
-            repass
-        };
-    }
+    return {
+        firstName,
+        lastName,
+        email,
+        picture,
+        password,
+        repass
+    };
+}
 }

@@ -2,7 +2,7 @@
     @if (currentUser) {
     <div class="profile-card">
         <div class="profile-header">
-            <img src="assets/uploads/profile.jpg" alt="User Profile Picture" class="profile-picture" />
+            <img src="{{currentUser.picture}}" alt="User Profile Picture" class="profile-picture" />
             <h1 class="username">{{currentUser.firstName}} {{currentUser.lastName}}</h1>
             <p class="email">{{currentUser.email}}</p>
         </div>
