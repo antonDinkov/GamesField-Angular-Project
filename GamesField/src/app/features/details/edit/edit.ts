@@ -7,6 +7,7 @@ import { CreateFormService } from '../../../core/services/create-form.service';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { EditFormService } from '../../../core/services/edit-form.service';
 import { Location } from '@angular/common';
+import { BackendError } from '../../../models/beckendError.model';
 
 @Component({
     selector: 'app-edit',
@@ -21,6 +22,8 @@ export class Edit implements OnInit {
     form: FormGroup;
     private id: string = '';
     private name: string = '';
+
+    public errorToShow: BackendError | null = null;
 
     constructor(private location: Location, private route: ActivatedRoute, private router: Router, public formService: CreateFormService) {
         this.form = this.formService.createCreateForm();
@@ -57,6 +60,19 @@ export class Edit implements OnInit {
             },
             error: (err) => {
                     console.error('Edit Game Failed:', err);
+
+                    const backendErrors = err.error?.errors;
+
+                    if (typeof backendErrors === 'string') {
+                        this.errorToShow = { message: backendErrors };
+                    } else if (Array.isArray(backendErrors)) {
+                        this.errorToShow = { message: backendErrors.join(', ') };
+                    } else if (typeof backendErrors === 'object' && backendErrors !== null) {
+                        this.errorToShow = { message: Object.values(backendErrors).join(', ') };
+                    } else {
+                        this.errorToShow = { message: 'Unexpected error occurred' };
+                    }
+                    
                     this.formService.markFormTouched(this.form);
                 }
         })
