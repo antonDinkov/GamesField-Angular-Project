@@ -1,1 +1,0 @@
-import{a}from"./chunk-WJ5ZAXFD.js";import{o as i,r,ta as o}from"./chunk-NQD7YVRL.js";var n=class t{constructor(e){this.httpClient=e}apiUrl=a.apiUrl;getGameById(e){return this.httpClient.get(`${this.apiUrl}/catalog/${e}`,{withCredentials:!0})}static \u0275fac=function(p){return new(p||t)(r(o))};static \u0275prov=i({token:t,factory:t.\u0275fac,providedIn:"root"})};export{n as a};
