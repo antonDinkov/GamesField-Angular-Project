@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user.model';
-import { map, Observable, tap } from 'rxjs';
+import { catchError, map, Observable, of, tap } from 'rxjs';
 import { getCookie } from '../../shared/utils/cookie.util';
 
 @Injectable({
@@ -63,10 +63,21 @@ export class AuthService {
             );
     }
 
-    checkSession(): Observable<User> {
+    checkSession(): Observable<User | null> {
         return this.httpClient.get<{ user: User }>(`${this.apiUrl}/me`, { withCredentials: true })
             .pipe(
-                map(response => response.user)
+                map(response => {
+                    this._isLoggedIn.set(true);
+                    this._user.set(response.user);
+                    localStorage.setItem('user', JSON.stringify(response.user));
+                    return response.user;
+                }),
+                catchError(err => {
+                    this._isLoggedIn.set(false);
+                    this._user.set(null);
+                    localStorage.removeItem('user');
+                    return of(null);
+                })
             );
     }
 

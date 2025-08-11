@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
     styleUrl: './profile.css'
 })
 export class Profile implements OnInit {
-    public currentUser!: User;
+    public currentUser!: User | null;
     private getGameService = inject(GetById);
     private authService = inject(AuthService);
     public myGames: string[] = [];
