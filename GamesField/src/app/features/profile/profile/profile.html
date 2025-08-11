@@ -27,10 +27,7 @@
 
         </div>
 
-        <div class="upload-section">
-            <label for="upload">Change profile picture:</label>
-            <input type="file" id="upload" accept="image/*" />
-        </div>
+        
         <div class="buttons">
             <a class="back-button" href="javascript:void(0)" (click)="goBack()">⬅ Back</a>
             <a [routerLink]="['/profile', currentUser._id, 'edit']">Edit</a>
