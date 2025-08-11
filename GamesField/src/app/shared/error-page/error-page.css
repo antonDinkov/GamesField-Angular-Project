@@ -1,0 +1,85 @@
+#rightside {
+      margin-top: 3%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .profile-card {
+      background-color: #252525;
+      border-radius: 8px;
+      padding: 2rem;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .profile-picture {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #00ffcc;
+      margin-bottom: 1rem;
+    }
+
+    .username {
+      font-size: 1.5rem;
+      margin-bottom: 0.2rem;
+      color: #00ffcc;
+    }
+
+    .email {
+      font-size: 0.95rem;
+      color: #aaa;
+    }
+
+    .profile-info {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .profile-info p {
+      margin: 0.5rem 0;
+    }
+
+    .buttons {
+      margin-top: 1em;
+      display: flex;
+      gap: 5%;
+      justify-content: center;
+    }
+
+    .back-button {
+      color: red !important;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      all: unset;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      height: 20px;
+      min-width: 80px;
+      background-color: #00ffcc;
+      color: #000;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      transition: background-color 0.2s ease;
+      cursor: pointer;

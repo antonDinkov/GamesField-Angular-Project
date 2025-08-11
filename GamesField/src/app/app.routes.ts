@@ -49,5 +49,9 @@ export const routes: Routes = [
     {
         path: "search",
         loadComponent: () => import("./features/search/search").then(c => c.Search)
+    },
+    {
+        path: "**",
+        loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
     }
 ];
