@@ -8,7 +8,7 @@ import { authFeatureKey, authReducer } from './features/auth/store/auth/auth.red
 import { provideEffects } from '@ngrx/effects';
 import { AuthEffects } from './features/auth/store/auth/auth.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment.prod';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,11 +17,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(withFetch()),
     provideAnimations(),
+    provideStore({ [authFeatureKey]: authReducer }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    provideStore({ [authFeatureKey]: authReducer }),
-    provideEffects(AuthEffects)
+    provideEffects([AuthEffects])
   ]
 };
