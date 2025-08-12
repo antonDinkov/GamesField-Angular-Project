@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayBtn } from './play-btn';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('PlayBtn', () => {
   let component: PlayBtn;
@@ -10,7 +13,13 @@ describe('PlayBtn', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PlayBtn],
-      providers: [provideHttpClientTesting()]
+      providers: [provideHttpClient(), provideHttpClientTesting(),
+      {
+        provide: ActivatedRoute,
+        useValue: {
+          paramMap: of(convertToParamMap({}))
+        }
+      }]
     })
     .compileComponents();
 

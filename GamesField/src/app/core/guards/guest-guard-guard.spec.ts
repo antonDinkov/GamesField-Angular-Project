@@ -3,6 +3,8 @@ import { CanActivateFn } from '@angular/router';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { guestGuardGuard } from './guest-guard-guard';
+import { AuthService } from '../services/auth-service';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('guestGuardGuard', () => {
   const executeGuard: CanActivateFn = (...guardParameters) => 
@@ -10,7 +12,7 @@ describe('guestGuardGuard', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        providers: [provideHttpClientTesting()]
+        providers: [AuthService, provideHttpClient() ,provideHttpClientTesting()]
     });
   });
 

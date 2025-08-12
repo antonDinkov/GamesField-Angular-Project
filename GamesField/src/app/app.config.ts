@@ -9,6 +9,8 @@ import { provideEffects } from '@ngrx/effects';
 import { AuthEffects } from './features/auth/store/auth/auth.effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,6 +24,8 @@ export const appConfig: ApplicationConfig = {
       maxAge: 25,
       logOnly: environment.production,
     }),
-    provideEffects([AuthEffects])
+    provideEffects([AuthEffects]),
+    provideHttpClientTesting(),
+    provideMockStore()
   ]
 };

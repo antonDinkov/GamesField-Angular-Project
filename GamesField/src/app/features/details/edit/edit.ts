@@ -13,7 +13,8 @@ import { BackendError } from '../../../models/beckendError.model';
     selector: 'app-edit',
     imports: [ReactiveFormsModule],
     templateUrl: './edit.html',
-    styleUrl: './edit.css'
+    styleUrl: './edit.css',
+    providers: [GetById]
 })
 export class Edit implements OnInit {
     private getGame = inject(GetById);

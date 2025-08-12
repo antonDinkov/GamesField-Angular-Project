@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Profile } from './profile';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
 
 describe('Profile', () => {
   let component: Profile;
@@ -10,7 +11,7 @@ describe('Profile', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Profile],
-      providers: [provideHttpClientTesting()]
+      providers: [provideHttpClient(), provideHttpClientTesting()]
     })
     .compileComponents();
 

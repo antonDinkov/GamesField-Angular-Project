@@ -2,6 +2,9 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 import { Login } from './login';
+import { AuthService } from '../../../core/services/auth-service';
+import { provideHttpClient } from '@angular/common/http';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('Login', () => {
   let component: Login;
@@ -10,7 +13,7 @@ describe('Login', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Login],
-      providers: [provideHttpClientTesting()]
+      providers: [AuthService, provideMockStore({}), provideHttpClient(), provideHttpClientTesting()]
     })
     .compileComponents();
 
