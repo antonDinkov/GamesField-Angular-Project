@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeBoard } from './home-board';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('HomeBoard', () => {
   let component: HomeBoard;
@@ -8,7 +9,8 @@ describe('HomeBoard', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeBoard]
+      imports: [HomeBoard],
+      providers: [provideHttpClientTesting()]
     })
     .compileComponents();
 

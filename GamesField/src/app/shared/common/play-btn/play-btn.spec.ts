@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PlayBtn } from './play-btn';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('PlayBtn', () => {
   let component: PlayBtn;
@@ -8,7 +9,8 @@ describe('PlayBtn', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PlayBtn]
+      imports: [PlayBtn],
+      providers: [provideHttpClientTesting()]
     })
     .compileComponents();
 

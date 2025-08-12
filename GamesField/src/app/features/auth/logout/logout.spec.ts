@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Logout } from './logout';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 
 describe('Logout', () => {
   let component: Logout;
@@ -8,7 +9,8 @@ describe('Logout', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Logout]
+      imports: [Logout],
+      providers: [provideHttpClientTesting()]
     })
     .compileComponents();
 
