@@ -2,11 +2,12 @@ import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@
 import { Game } from '../../../models/game.model';
 import { PlayBtn } from '../../../shared/common/play-btn/play-btn';
 import { RouterModule } from '@angular/router';
+import { ShortenPipe } from '../../../core/pipes/shorten-pipe';
 
 @Component({
     selector: 'app-home-item',
     standalone: true,
-    imports: [PlayBtn, RouterModule],
+    imports: [PlayBtn, RouterModule, ShortenPipe],
     templateUrl: './home-item.html',
     styleUrls: ['./home-item.css']
 })

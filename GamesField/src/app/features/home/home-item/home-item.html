@@ -5,10 +5,11 @@
         <app-play-btn [game]="game" (played)="onPushButton($event)"></app-play-btn>
         <a [routerLink]="['/details', game.name, game._id]">Details</a>
     </div>
-    <p>{{game.description}}</p>
+    <p>{{game.description | shorten:50}}</p>
     <div class="feedback">
         <p><i class="fa-solid fa-gamepad"></i><span>{{game.played}}</span></p>
         <p><i class="fa-solid fa-eye"></i><span>{{game.views}}</span></p>
         <p><i class="fa-solid fa-heart"></i><span>{{game.likes.length}}</span></p>
     </div>
+    <p>{{game.instructions | shorten:50 }}</p>
 </div>

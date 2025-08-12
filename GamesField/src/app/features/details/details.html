@@ -1,7 +1,7 @@
 <div id="rigthside">
     @if(gameInfo){
     <div class="container">
-        <h1 class="game-title">{{gameInfo.name}}</h1>
+        <h1 class="game-title">{{gameInfo.name | uppercase}}</h1>
         <div class="game-details">
             <img [src]="gameInfo.image" alt="no image" class="game-image" />
 

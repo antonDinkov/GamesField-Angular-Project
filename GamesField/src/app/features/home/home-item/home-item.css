@@ -58,8 +58,8 @@
     -webkit-line-clamp: 2;        
     line-clamp: 2;                
     
-    overflow: hidden;             
-    text-overflow: ellipsis;    
+    /* overflow: hidden;             
+    text-overflow: ellipsis; */    
 }
 
 .feedback>p>i {

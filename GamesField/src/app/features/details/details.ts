@@ -6,11 +6,11 @@ import { switchMap } from 'rxjs';
 import { Game } from '../../models/game.model';
 import { PlayBtn } from '../../shared/common/play-btn/play-btn';
 import { LikeService } from '../../core/services/like.service';
-import { Location } from '@angular/common';
+import { Location, UpperCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-details',
-    imports: [PlayBtn, RouterLink],
+    imports: [PlayBtn, RouterLink, UpperCasePipe],
     templateUrl: './details.html',
     styleUrl: './details.css'
 })
