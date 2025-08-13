@@ -19,7 +19,7 @@ describe('Details', () => {
       {
         provide: ActivatedRoute,
         useValue: {
-          paramMap: of(convertToParamMap({ id: '123' }))  // пробвай с някакъв id
+          paramMap: of(convertToParamMap({ id: '123' }))
         }
       }]
     })

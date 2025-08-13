@@ -12,7 +12,7 @@ describe('Delete', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Delete],
-      providers: [provideRouter([])],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     })
     .compileComponents();
 
