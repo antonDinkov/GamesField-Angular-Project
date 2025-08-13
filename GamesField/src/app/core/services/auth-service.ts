@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user.model';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { getCookie } from '../../shared/utils/cookie.util';
+import { GetById } from './get-by-id';
 
 @Injectable({
     providedIn: 'root'
@@ -15,12 +16,19 @@ export class AuthService {
     private _user = signal<User | null>(null);
     readonly user = this._user.asReadonly();
     private apiUrl = environment.apiUrl;
+    gameService = inject(GetById)
 
     constructor(private httpClient: HttpClient) {
         this.checkSession().subscribe({
             next: (user) => {
                 this._user.set(user);
                 this._isLoggedIn.set(true);
+                if (user.lastPlayed) {
+                    // Зареждаме Last Played веднага
+                    this.gameService.getGameById(user.lastPlayed).subscribe(game => {
+                        this.setLastPlayed(game.post._id, game.post.name);
+                    });
+                }
             },
             error: () => {
                 localStorage.removeItem('user');
@@ -49,6 +57,15 @@ export class AuthService {
                     this._isLoggedIn.set(true);
                     this._user.set(response.user);
                     localStorage.setItem('user', JSON.stringify(response.user));
+
+                    if (response.user.lastPlayed) {
+                        // Зареждаме LastPlayed веднага
+                        this.gameService.getGameById(response.user.lastPlayed).subscribe(game => {
+                            this.setLastPlayed(game.post._id, game.post.name);
+                        });
+                    } else {
+                        this.lastPlayed$.next(null);
+                    }
                 }))
     }
 

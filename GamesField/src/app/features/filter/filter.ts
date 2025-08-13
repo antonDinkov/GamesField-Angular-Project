@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, Inject, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../core/services/auth-service';
 import { LikeService } from '../../core/services/like.service';
 import { RouterLink } from '@angular/router';
@@ -16,31 +16,25 @@ export class Filter implements OnInit {
     authservice = inject(AuthService);
     service = inject(LikeService);
     gameService = inject(GetById);
-    isLoggedIn: boolean = false;
+    isLoggedIn = this.authservice.isLoggedIn;
     gameName: string = '';
     gameId: string | null = null;
     userId: string | undefined = '';
+    lastPlayed: { id: string; name: string } | null = null;
 
     ngOnInit(): void {
-        this.authservice.checkSession().subscribe(user => {
-            this.isLoggedIn = true;
-            if (user.lastPlayed) {
-                this.gameService.getGameById(user.lastPlayed).subscribe(game => {
-                    this.authservice.setLastPlayed(game.post._id, game.post.name);
-                });
-            }
-        });
-
-        // Следим за промени в lastPlayed
-        this.authservice.lastPlayed$.subscribe(lastPlayed => {
-            if (lastPlayed) {
-                this.gameId = lastPlayed.id;
-                this.gameName = lastPlayed.name;
+        this.authservice.lastPlayed$.subscribe(value => {
+            this.lastPlayed = value;
+            if (value) {
+                this.gameId = value.id;
+                this.gameName = value.name;
             }
         });
     }
 
-    loadLastPlayed() {
+
+
+    /* loadLastPlayed() {
         this.authservice.checkSession().subscribe({
             next: (response) => {
                 this.gameId = response.lastPlayed;
@@ -52,5 +46,5 @@ export class Filter implements OnInit {
             },
             error: (err) => console.error(err)
         });
-    }
+    } */
 }

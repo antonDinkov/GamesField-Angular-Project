@@ -1,8 +1,8 @@
 <div id="leftside">
     <p>PREFERENCES:</p>
     <ul>
-        @if (isLoggedIn && gameId) {
-        <li><a [routerLink]="['/details', gameName, gameId]" (click)="loadLastPlayed()">Last Played</a></li><!-- [routerLink]="['/details', name(), id()]" -->
+        @if (isLoggedIn() && lastPlayed) {
+        <li><a [routerLink]="['/details', gameName, gameId]">Last Played</a></li><!-- [routerLink]="['/details', name(), id()]" -->
         <li><a href="#">Most Popular</a></li>
         <li><a href="#">Top Rated</a></li>
         <li><a href="#">Action</a></li>
