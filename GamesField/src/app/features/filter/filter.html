@@ -1,10 +1,18 @@
 <div id="leftside">
     <p>PREFERENCES:</p>
     <ul>
-        <li><a href="#">Last Played</a></li>
+        @if (isLoggedIn && gameId) {
+        <li><a [routerLink]="['/details', gameName, gameId]" (click)="loadLastPlayed()">Last Played</a></li><!-- [routerLink]="['/details', name(), id()]" -->
         <li><a href="#">Most Popular</a></li>
         <li><a href="#">Top Rated</a></li>
         <li><a href="#">Action</a></li>
         <li><a href="#">Strategy</a></li>
+        } @else {
+        <li><a href="#">Most Popular</a></li>
+        <li><a href="#">Top Rated</a></li>
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Strategy</a></li>
+        }
+
     </ul>
 </div>

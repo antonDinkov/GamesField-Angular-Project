@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { User } from '../../models/user.model';
-import { map, Observable, tap } from 'rxjs';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 import { getCookie } from '../../shared/utils/cookie.util';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { getCookie } from '../../shared/utils/cookie.util';
 export class AuthService {
     private _isLoggedIn = signal<boolean>(false);
     readonly isLoggedIn = this._isLoggedIn.asReadonly();
-
+    lastPlayed$ = new BehaviorSubject<{ id: string, name: string } | null>(null);
     private _user = signal<User | null>(null);
     readonly user = this._user.asReadonly();
     private apiUrl = environment.apiUrl;
@@ -85,5 +85,11 @@ export class AuthService {
                 { withCredentials: true }
             )
             .pipe(map(response => response.user));
+    }
+
+
+
+    setLastPlayed(gameId: string, gameName: string) {
+        this.lastPlayed$.next({ id: gameId, name: gameName });
     }
 }

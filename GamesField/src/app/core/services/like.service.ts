@@ -15,7 +15,11 @@ export class LikeService {
     views$ = this._views.asReadonly();
     private _played = signal<number | null>(null);
     played$ = this._played.asReadonly();
-    
+    private _name = signal<string | undefined>('');
+    name$ = this._name.asReadonly();
+    private _id = signal<string | undefined>('');
+    id$ = this._id.asReadonly();
+
     constructor(private httpClient: HttpClient) {};
 
     interactWithTheGame(id: string, interaction: string): Observable<Game> {
@@ -24,9 +28,17 @@ export class LikeService {
                 this._like.set(response.likes.length);
                 this._views.set(response.views);
                 this._played.set(response.played);
+                this._name.set(response.name);
+                this._id.set(response._id);
+                
                 return response
             })
         )
         return game;
     }
+
+    /* setLastPlayed(id: string, name: string) {
+        this._id.set(id);
+        this._name.set(name);
+    } */
 }

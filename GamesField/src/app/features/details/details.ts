@@ -15,6 +15,7 @@ import { Location, UpperCasePipe } from '@angular/common';
     styleUrl: './details.css'
 })
 export class Details implements OnInit {
+    authService = inject(AuthService);
     isLoggedIn = inject(AuthService).isLoggedIn;
     private gameService = inject(GetById);
     private route = inject(ActivatedRoute);
@@ -47,6 +48,7 @@ export class Details implements OnInit {
             this.interactionCount = response.interactionCount;
             this.interactorsNames = response.interactorsNames;
             this.played.set(response.post.played);
+            this.authService.setLastPlayed(response.post._id, response.post.name);
         });
     }
 

@@ -1,8 +1,9 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, inject, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { Game } from '../../../models/game.model';
 import { PlayBtn } from '../../../shared/common/play-btn/play-btn';
 import { RouterModule } from '@angular/router';
 import { ShortenPipe } from '../../../core/pipes/shorten-pipe';
+import { AuthService } from '../../../core/services/auth-service';
 
 @Component({
     selector: 'app-home-item',
@@ -13,6 +14,8 @@ import { ShortenPipe } from '../../../core/pipes/shorten-pipe';
 })
 export class HomeItem implements OnInit, OnChanges, OnDestroy {
     @Input() game!: Game;
+
+    authService = inject(AuthService);
 
     ngOnInit(): void {
         console.log('HomeItem initialized with game:', this.game);
@@ -31,6 +34,7 @@ export class HomeItem implements OnInit, OnChanges, OnDestroy {
 
     onPushButton(newPlayCount: number): void {
         this.game.played = newPlayCount;
+        this.authService.setLastPlayed(this.game._id, this.game.name);
     }
 }
 
