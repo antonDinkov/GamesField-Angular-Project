@@ -25,7 +25,5 @@ export const appConfig: ApplicationConfig = {
       logOnly: environment.production,
     }),
     provideEffects([AuthEffects]),
-    provideHttpClientTesting(),
-    provideMockStore()
   ]
 };
