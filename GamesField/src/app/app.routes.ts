@@ -66,6 +66,22 @@ export const routes: Routes = [
         loadComponent: () => import("./features/search/search").then(c => c.Search)
     },
     {
+        path: "underConstruction0",
+        loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
+    },
+    {
+        path: "underConstruction1",
+        loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
+    },
+    {
+        path: "underConstruction2",
+        loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
+    },
+    {
+        path: "underConstruction3",
+        loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
+    },
+    {
         path: "**",
         loadComponent: () => import("./shared/error-page/error-page").then(c => c.ErrorPage)
     }

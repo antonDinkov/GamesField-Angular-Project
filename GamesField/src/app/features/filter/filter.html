@@ -3,15 +3,15 @@
     <ul>
         @if (isLoggedIn() && lastPlayed) {
         <li><a [routerLink]="['/details', gameName, gameId]">Last Played</a></li><!-- [routerLink]="['/details', name(), id()]" -->
-        <li><a href="#">Most Popular</a></li>
-        <li><a href="#">Top Rated</a></li>
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Strategy</a></li>
+        <li><a [routerLink]="['/underConstruction0']">Most Popular</a></li>
+        <li><a [routerLink]="['/underConstruction1']">Top Rated</a></li>
+        <li><a [routerLink]="['/underConstruction2']">Action</a></li>
+        <li><a [routerLink]="['/underConstruction3']">Strategy</a></li>
         } @else {
-        <li><a href="#">Most Popular</a></li>
-        <li><a href="#">Top Rated</a></li>
-        <li><a href="#">Action</a></li>
-        <li><a href="#">Strategy</a></li>
+        <li><a [routerLink]="['/underConstruction0']">Most Popular</a></li>
+        <li><a [routerLink]="['/underConstruction1']">Top Rated</a></li>
+        <li><a [routerLink]="['/underConstruction2']">Action</a></li>
+        <li><a [routerLink]="['/underConstruction3']">Strategy</a></li>
         }
 
     </ul>
