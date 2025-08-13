@@ -81,6 +81,10 @@
   left: -1rem;
 }
 
+.user-games ul li:nth-child(n+6) {
+  display: none;
+}
+
 .upload-section {
   margin-top: 1rem;
   text-align: center;
