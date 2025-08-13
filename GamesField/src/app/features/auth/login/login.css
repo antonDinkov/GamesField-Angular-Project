@@ -72,3 +72,7 @@
 .login-form button:hover {
   background-color: #00e6b8;
 }
+
+.login-card > .h1errorToShow {
+    color: palevioletred !important;
+}

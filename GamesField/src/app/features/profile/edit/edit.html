@@ -2,7 +2,7 @@
     <div class="edit-profile-card">
         <h1>Edit Profile</h1>
         @if(errorToShow != null){
-            <h1>{{errorToShow.message}}</h1>
+            <h1 class="h1errorToShow">{{errorToShow.message}}</h1>
         }
         <form class="edit-profile-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="firstName">First name</label>

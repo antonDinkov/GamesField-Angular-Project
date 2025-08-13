@@ -2,7 +2,7 @@
     <div class="login-card">
         <h1>Login Form</h1>
         @if(errorToShow != null){
-            <h1>{{errorToShow.message}}</h1>
+            <h1 class="h1errorToShow">{{errorToShow.message}}</h1>
         }
         <form class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="email">Email</label>

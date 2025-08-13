@@ -77,3 +77,7 @@
 .back-button {
    color: red !important;
 }
+
+.edit-game-card > .h1errorToShow{
+    color: palevioletred;
+}

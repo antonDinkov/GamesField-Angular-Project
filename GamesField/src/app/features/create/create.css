@@ -92,3 +92,7 @@
     font-size: 0.875rem;
     margin-top: 0.25rem;
 }
+
+.create-game-card > .h1errorToShow{
+    color: palevioletred;
+}

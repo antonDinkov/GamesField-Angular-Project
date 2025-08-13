@@ -2,7 +2,7 @@
     <div class="register-card">
         <h1>REGISTER FORM</h1>
         @if(errorToShow != null){
-            <h1>{{errorToShow.message}}</h1>
+            <h1 class="h1errorToShow">{{errorToShow.message}}</h1>
         }
         <form class="register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="first-name">First Name</label>

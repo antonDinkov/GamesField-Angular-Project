@@ -2,7 +2,7 @@
     <div class="edit-game-card">
         <h1>Edit Game</h1>
         @if(errorToShow != null){
-            <h1>{{errorToShow.message}}</h1>
+            <h1 class="h1errorToShow">{{errorToShow.message}}</h1>
         }
         <form class="edit-game-form" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="title">Name</label>
