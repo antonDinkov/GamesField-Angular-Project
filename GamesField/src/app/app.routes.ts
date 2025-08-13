@@ -42,6 +42,11 @@ export const routes: Routes = [
         loadComponent: () => import("./features/profile/edit/edit").then(c => c.Edit)
     },
     {
+        path: "profile/:id",
+        canActivate: [authGuardGuard],
+        loadComponent: () => import("./features/profile/delete/delete").then(c => c.Delete)
+    },
+    {
         path: "register",
         canActivate: [guestGuardGuard],
         loadComponent: () => import("./features/auth/register/register").then(c => c.Register)

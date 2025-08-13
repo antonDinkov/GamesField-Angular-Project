@@ -16,4 +16,9 @@ export class DeleteService {
         const url = `${this.apiUrl}/catalog/${id}`;
         return this.httpClient.delete<Delete>(url, {withCredentials: true});
     }
+
+    deleteProfile(id: string): Observable<Delete> {
+        const url = `${this.apiUrl}/profile/${id}`;
+        return this.httpClient.delete<Delete>(url, {withCredentials: true});
+    }
 }
